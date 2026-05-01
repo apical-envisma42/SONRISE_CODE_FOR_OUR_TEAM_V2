@@ -1,0 +1,106 @@
+/* GLOBAL STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #007BFF;
+    --accent-gold: #FFD700;
+    --text-dark: #333;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --crimson-red: #dc3545;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* THE BACKGROUND GRADIENT YOU LIKE */
+.login-page-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--crimson-red) 0%, #e0e0e0 100%);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+.login-card {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.login-card h2 {
+    color: var(--crimson-red); /* More Crimson added here */
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.login-card p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--crimson-red); /* Crimson for the back link */
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.back-link:hover {
+    opacity: 0.7;
+}
+
+/* BUTTONS WITH CRIMSON TOUCHES */
+.social-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1.5px solid #eee; /* Light border initially */
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.social-btn i {
+    font-size: 1.1rem;
+}
+
+.social-btn:hover {
+    border-color: var(--crimson-red); /* Crimson border on hover */
+    color: var(--crimson-red);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.1);
+}
+
+.social-btn.google i {
+    color: #DB4437; /* Google Red */
+}
+
+.social-btn.apple i {
+    color: #DB4437;
+}
