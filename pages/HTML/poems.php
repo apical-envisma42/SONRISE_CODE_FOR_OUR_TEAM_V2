@@ -11,31 +11,7 @@
 </head>
 <body>
 
-<header class="header">
-    <nav class="nav_container">
-
-        <div class="logo">
-            <img src="../../assets/Logos/sonrise.png" alt="logo">
-        </div>
-
-        <!-- Mobile Menu -->
-        <input type="checkbox" id="menu-bar">
-        <label for="menu-bar"><i class="fas fa-bars"></i></label>
-
-        <ul class="nav-links">
-            <li><a href="../../index.php">Home</a></li>
-            <li><a href="../HTML/blog.html" class="active">Our Poems</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Login</a></li>
-            <li><button href="#SECTION_POEMS" class="btn_primary mobile-only">READ WITH US</button></li>
-        </ul>
-
-        <button class="btn_primary desktop-only">
-            <a href="#">READ WITH US</a>
-        </button>
-
-    </nav>
-</header>
+<?php require_once __DIR__ . '/../../components/universal_components/nav_home.inc.php' ?>
 
 
 <!-- SEARCH BAR -->
@@ -61,7 +37,7 @@
 <section class="blog-container" id="SECTION_POEMS">
 
     <div class="blog-card poem-card" data-genre="love">
-        <img src="../Images/Love_at_sea.jpg" alt="Love Poetry">
+        <img src="../../assets/Images/POEMS_IMAGES/Love_at_sea.jpg" alt="Love Poetry">
 
         <div class="blog-content">
             <span class="genre">Love</span>
@@ -82,7 +58,7 @@
 
 
     <div class="blog-card poem-card" data-genre="sad">
-        <img src="../Images/Broken_clock.jpg" alt="Sad Story">
+        <img src="../../assets/Images/POEMS_IMAGES/Broken_clock.jpg" alt="Sad Story">
 
         <div class="blog-content">
             <span class="genre">Sad</span>
@@ -100,7 +76,7 @@
 
 
     <div class="blog-card poem-card" data-genre="nature">
-        <img src="../Images/rain.jpg" alt="Nature Poem">
+        <img src="../../assets/Images/POEMS_IMAGES/rain.jpg" alt="Nature Poem">
 
         <div class="blog-content">
             <span class="genre">Nature</span>
@@ -120,7 +96,7 @@
 
 
     <div class="blog-card poem-card" data-genre="fantasy">
-        <img src="../Images/moon_light.jpg" alt="Fantasy Story">
+        <img src="../../assets/Images/POEMS_IMAGES/moon_light.jpg" alt="Fantasy Story">
 
         <div class="blog-content">
             <span class="genre">Fantasy</span>

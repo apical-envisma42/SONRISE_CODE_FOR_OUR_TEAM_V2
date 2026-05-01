@@ -11,6 +11,7 @@
     --text-dark: #333;
     --bg-light: #f8f9fa;
     --white: #ffffff;
+    --crimson-red: #dc3545;
 }
 
 body {
@@ -41,7 +42,7 @@ body {
 }
 
 .logo img {
-    height: 50px;
+    height: 150px;
     width: auto;
 }
 
@@ -190,7 +191,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 880px) {
     label[for="menu-bar"] {
         display: block;
         font-size: 1.5rem;
@@ -216,4 +217,10 @@ body {
 
     .desktop-only { display: none; }
     .mobile-only { display: block; }
+}
+
+@media(min-width: 881px) {
+    .mobile-only {
+        display: none;
+    }
 }
