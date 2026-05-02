@@ -4,6 +4,7 @@ define('ROOT_PATH_CORE_FILES', '/../');
 require_once __DIR__ . '/session_init.php';
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/../vendor/autoload.php';
+// CHANGE TO DOMAIN NAME DURING PROD
 define('BASE_URL', 'http://localhost/SONRISE/');
 
 use Dotenv\Dotenv;

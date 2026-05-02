@@ -1,18 +1,11 @@
+<?php require_once __DIR__ . '/../../components/universal_components/head_home.inc.php' ?>
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Son-Rise | Blog</title>
-    <link rel="shortcut icon" href="./../../assets/Logos/sonrise.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../assets/CSS/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-
-<?php require_once __DIR__ . '/../../components/universal_components/nav_home.inc.php' ?>
-
+<?php require_once __DIR__ . '/../../components/universal_components/nav_home.inc.php'; ?>
 
 <!-- SEARCH BAR -->
 <section class="search-section">
@@ -25,7 +18,7 @@
         <input 
             type="text" 
             id="searchBar" 
-            placeholder="Find the perfect genre..."
+            placeholder="Find the perfect Poem through 𝗚𝗲𝗻𝗿𝗲, 𝗔𝘂𝘁𝗵𝗼𝗿 & 𝗧𝗶𝘁𝗹𝗲..."
             onkeyup="searchPoems()"
         >
     </div>
@@ -116,6 +109,7 @@
 
 </section>
 
+<?php require_once __DIR__ . '/../../components/universal_components/footer.inc.php' ?>
 
 <!-- SCRIPT -->
 <script src="./../../assets/JS/search_poems.js"></script>

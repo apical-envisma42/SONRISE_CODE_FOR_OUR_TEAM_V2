@@ -1,5 +1,5 @@
-<?php require_once __DIR__ . '/components/page_specific_components/home_page/head_home.inc.php';
-      require_once __DIR__ . '/components/page_specific_components/home_page/nav_home.inc.php'; 
+<?php require_once __DIR__ . '/components/universal_components/head_home.inc.php';
+      require_once __DIR__ . '/components/universal_components/nav_home.inc.php';
 ?>
 <main>
     <section class="hero">
@@ -17,19 +17,20 @@
 
             <div class="form_for_Oauth">
                 <h3>Join the Conversation</h3>
-                <form action="../PHP/login.php" method="POST">
-                    <button type="submit" class="social-btn">
+                <form action="">
+                    <!-- <a type="submit" class="social-btn">
                         <i class="fa-brands fa-google"></i>
                         <span>Continue with Google</span>
-                    </button>
-                    <button type="submit" class="social-btn">
-                        <i class="fa-brands fa-apple"></i>
-                        <span>Continue with Apple</span>
-                    </button>
-                    <button type="submit" class="social-btn">
+                    </a> -->
+                     <a href="./pages/HTML/login.html" type="submit" class="social-btn">
+                        <i class="fas fa-user"></i>
+                        <span>GO TO LOGIN PAGE</span>
+                    </a>
+                    
+                    <!-- <button type="submit" class="social-btn">
                         <i class="fa-solid fa-envelope"></i>
                         <span>Continue with Email</span>
-                    </button>
+                    </button> -->
                 </form>
             </div>
         </div>

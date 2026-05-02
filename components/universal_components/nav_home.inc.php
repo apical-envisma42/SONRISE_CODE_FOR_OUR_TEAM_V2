@@ -2,23 +2,38 @@
     <nav class="nav_container">
 
         <div class="logo">
-            <img src="../../assets/Logos/sonrise.png" alt="logo">
+             <!-- DURING PROD MAKE 'HTP' to 'HTTPS' -->
+            <img src="http://<?= xss_protect($_SERVER['HTTP_HOST']) ?>/sonrise/assets/Logos/sonrise.png" alt="logo">
         </div>
 
         <!-- Mobile Menu -->
         <input type="checkbox" id="menu-bar">
         <label for="menu-bar"><i class="fas fa-bars"></i></label>
 
-        <ul class="nav-links">
-            <li><a href="../../index.php">Home</a></li>
-            <li><a href="./pages/HTML/poems.php" class="active">Our Poems</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Login</a></li>
-            <li><button href="#SECTION_POEMS" class="btn_primary mobile-only">READ WITH US</button></li>
-        </ul>
+<?php 
+$current_page = basename($_SERVER['SCRIPT_NAME']); 
+?>
+
+<ul class="nav-links">
+    <li>
+        <a href="../../index.php" class="<?= ($current_page == 'index.php') ? 'active' : '' ?>">Home</a>
+    </li>
+    <li>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php" class="<?= ($current_page == 'poems.php') ? 'active' : '' ?>">Our Literature</a>
+    </li>
+    <li>
+        <a href="#" class="<?= ($current_page == 'about.php') ? 'active' : '' ?>">About Us</a>
+    </li>
+    <li>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/login.html" class="<?= ($current_page == 'login.html') ? 'active' : '' ?>">Login</a>
+    </li>
+    <li>
+        <button href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php" class="btn_primary mobile-only">READ WITH US</button>
+    </li>
+</ul>
 
         <button class="btn_primary desktop-only">
-            <a href="#">READ WITH US</a>
+            <a href="#" style="color: #000000">READ WITH US</a>
         </button>
 
     </nav>
