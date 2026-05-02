@@ -56,6 +56,6 @@
         </aside>
     </section>
 </main>
-
+<?php include_once __DIR__ . '/components/universal_components/footer.inc.php' ?>
 </body>
 </html>

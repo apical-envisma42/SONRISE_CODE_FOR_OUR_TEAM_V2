@@ -100,6 +100,21 @@ if($acc_Status == 'active') {
 return $badgeClass;
 }
 
+function get_dynamic_title() {
+    $current_file = basename($_SERVER['SCRIPT_NAME']); 
+
+    $titles = [
+        'index.php'  => 'Welcome',
+        'poems.php'  => 'Our Literature',
+        'about.php'  => 'About Us',
+        'login.php'  => 'Login',
+        'login.html' => 'Login'
+    ];
+
+    $page_name = isset($titles[$current_file]) ? $titles[$current_file] : 'Welcome';
+
+    return "Son-Rise | " . xss_protect($page_name);
+}
 
 function xss_protect($string) {
     return htmlspecialchars($string ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5 | ENT_DISALLOWED, 'UTF-8');

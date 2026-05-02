@@ -15,7 +15,7 @@
             <div class="founder-image">
                 <!-- PHOTO SPACE: Replace the src with your actual image path -->
                 <div class="photo-frame">
-                    <img src="../../assets/Images/girl_husband_wih_bookt.jpg" alt="Founder of Son-Rise">
+                    <img src="../../assets/Images/Mr_Preprah.jpeg" alt="Founder of Son-Rise">
                 </div>
             </div>
             

@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../oauth_core_files/config.php';
+<?php require_once __DIR__ . '/../../../../core_files/config.php';
 
 // $fixmyareaghana_tag = '<span style="color: #004b23;"><strong>FIXMYAREAGHANA</strong></span>';
 

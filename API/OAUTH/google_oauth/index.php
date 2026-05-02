@@ -10,7 +10,7 @@
             <h2>Welcome Back</h2>
             <p>Login to continue your creative journey.</p>
 
-            <form action="login.html" class="auth-form">
+            <form action="login.php" class="auth-form">
                 <div class="social-auth">
                     <a type="submit" class="social-btn google">
                         <i class="fa-brands fa-google"></i> Continue with Google

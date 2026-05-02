@@ -1,11 +1,11 @@
 <?php if(ob_get_level() === 0) ob_start();
 //THIS SENDS FROM OAUTH_API_FOLDER TO ROOT
-define('ROOT_PATH_CORE_FILES', '/../');
 require_once __DIR__ . '/session_init.php';
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 // CHANGE TO DOMAIN NAME DURING PROD
 define('BASE_URL', 'http://localhost/SONRISE/');
+define('ROOT_PATH_CORE_FILES', '/../');
 
 use Dotenv\Dotenv;
 

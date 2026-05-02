@@ -1,7 +1,7 @@
 <footer class="modern-footer">
     <div class="footer-top">
         <div class="footer-brand">
-            <img src="../../assets/Logos/sonrise.png" alt="Sonrise" class="footer-logo">
+            <img src="http://<?= xss_protect($_SERVER['HTTP_HOST']) ?>/sonrise/assets/Logos/sonrise.png" alt="Sonrise" class="footer-logo">
             <p>The new dawn of Ghanaian literature.</p>
         </div>
         
@@ -26,6 +26,6 @@
             <span class="dot"></span>
             <a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank" class="license-link">AGPL-3.0</a>
         </div>
-        <p class="credits">Crafted by [Your Name] & [Friend's Name]</p>
+        <p class="credits"><span style="color: #fff;">Crafted by </span><span style="color: #dc3545;"><strong>THE CODERS GROVE INITIATIVE</strong></span></p>
     </div>
 </footer>
