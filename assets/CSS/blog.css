@@ -52,16 +52,33 @@ body {
     list-style: none;
 }
 
+/* UPDATED NAVIGATION ANIMATION */
 .nav-links a {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 500;
-    transition: 0.3s;
+    position: relative; /* Necessary for the underline effect */
+    transition: color 0.3s ease;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--primary-blue);
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--crimson-red);
+    transition: width 0.3s ease; /* Animate the width from 0 to 100% */
+}
+
+.nav-links a:hover::after, 
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--crimson-red);
 }
 
 /* BUTTON */

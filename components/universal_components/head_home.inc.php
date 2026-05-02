@@ -11,6 +11,7 @@ require_once __DIR__ . '/../defined_code.php';
     <title>Son-Rise | Welcome</title>
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/home.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/blog.css">
+    <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/login.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/about.css">
     <link rel="shortcut icon" href="http://<?= xss_protect($_SERVER['HTTP_HOST']) ?>/sonrise/assets/Logos/sonrise.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">

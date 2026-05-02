@@ -22,10 +22,10 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
         <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php" class="<?= ($current_page == 'poems.php') ? 'active' : '' ?>">Our Literature</a>
     </li>
     <li>
-        <a href="#" class="<?= ($current_page == 'about.php') ? 'active' : '' ?>">About Us</a>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/about.php" class="<?= ($current_page == 'about.php') ? 'active' : '' ?>">About Us</a>
     </li>
     <li>
-        <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/login.html" class="<?= ($current_page == 'login.html') ? 'active' : '' ?>">Login</a>
+        <a href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/index.php" class="">Login</a>
     </li>
     <li>
         <button href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php" class="btn_primary mobile-only">READ WITH US</button>

@@ -61,6 +61,8 @@ body {
     filter: saturate(200);
 }
 
+
+
 .nav-links {
     display: flex;
     gap: 2.5rem;
@@ -92,9 +94,11 @@ body {
     width: 100%;
 }
 
-.nav-links a:hover {
+.nav-links a:hover, 
+.nav-links .active {
     color: var(--crimson-red);
 }
+
 
 /* UPDATED BUTTON ANIMATIONS */
 .btn_primary {
