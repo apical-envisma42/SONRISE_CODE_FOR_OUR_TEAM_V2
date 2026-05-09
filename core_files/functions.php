@@ -16,14 +16,14 @@ function validate_csrf_token($token) {
 
 function form_validiate_post_csrf($csrf_post_token) {
     if(empty($csrf_post_token) || !validate_csrf_token($csrf_post_token)): 
-    header("Location: ../pages/security_pages/csrf_invalid.php");
+    header("Location: ../pages/oauth_security_pages/csrf_invalid.php");
     exit();
     endif;
 }
 
-function check_logged_in() {
+function check_logged_in($header_location) {
 if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header("Location: ../index.php");
+    header("Location: " . $header_location);
     exit();
 }
 }
@@ -45,8 +45,8 @@ function block_admin_button_for_user() {
 
 function checkuserloginsendbacktohome() {
     if(!empty($_SESSION['logged_in'])):
-  header("Location: ../../index.php");
-  exit();
+    header("Location: " . xss_protect(BASE_URL) . "index.php");
+    exit();
 endif;
 }
 
@@ -63,22 +63,7 @@ function check_maintenance_mode() {
 }
 }
 
-function check_oauth_state_parameter() {
-    $get_oauth_state     = $_GET['state'] ?? null;
-    $session_oauth_state = $_SESSION['oauth_state'] ?? null;
 
-    if($get_oauth_state === null || $session_oauth_state === null || !hash_equals($session_oauth_state, $get_oauth_state)) {
-        unset($_SESSION['oauth_state']);
-
-        $user_ip = $_SERVER['REMOTE_ADDR'];
-        error_log("CSRF TOKEN MISMATCH IN OAUTH LOGIN. " . "USER IP ADDRESS: " . $user_ip);
-
-        header("Location: ../pages/csrf_invalid.php");
-        exit();
-    }
-    // SECOND ONE HELPS AVOID REPLAY ATTACKS
-    unset($_SESSION['oauth_state']);
-}
 
 function check_oauth_given_verfication_code() {
     if(!isset($_GET["code"]) || empty($_GET['code'])) {
@@ -89,22 +74,22 @@ function check_oauth_given_verfication_code() {
 }
 
 function get_account_colour($acc_Status) {
-global $badgeClass;
-if($acc_Status == 'active') {
-    $badgeClass = "active";
-} elseif($acc_Status == 'inactive') {
-    $badgeClass = "inactive";
-} elseif($acc_Status == 'pending') {
-    $badgeClass = "pending";
-}
-return $badgeClass;
+    $status = strtolower($acc_Status);
+    if($status == 'active') {
+        return "active";
+    } elseif($status == 'inactive' || $status == 'banned') {
+        return "inactive";
+    } elseif($status == 'pending') {
+        return "pending";
+    }
+    return "pending"; // Default
 }
 
 function get_dynamic_title() {
     $current_file = basename($_SERVER['SCRIPT_NAME']); 
 
     $titles = [
-        'index.php'  => 'Welcome',
+        'index.php'  => 'A Sanctuary for Poetry, Stories & Literature',
         'poems.php'  => 'Our Literature',
         'about.php'  => 'About Us',
         'login.php'  => 'Login',
@@ -113,7 +98,7 @@ function get_dynamic_title() {
 
     $page_name = isset($titles[$current_file]) ? $titles[$current_file] : 'Welcome';
 
-    return "Son-Rise | " . xss_protect($page_name);
+    return "Son-Rize | " . xss_protect($page_name);
 }
 
 function xss_protect($string) {
@@ -142,7 +127,34 @@ function error_message($error_code_api_func, $dbconnection) {
     }
 }
 
+function generate_oauth_state() { 
+    if(empty($_SESSION['oauth_state'])) {
+        $oauth_state = bin2hex(random_bytes(35));
+        $_SESSION['oauth_state'] = $oauth_state;
+    }
+    return $_SESSION['oauth_state'];
+}
 
+function check_oauth_state_parameter() {
+    static $already_validated = false;
+    if($already_validated) return true;
+    $get_oauth_state     = $_GET['state'] ?? null;
+    $session_oauth_state = $_SESSION['oauth_state'] ?? null;
+
+    if($get_oauth_state === null || $session_oauth_state === null || !hash_equals($session_oauth_state, $get_oauth_state)) {
+        unset($_SESSION['oauth_state']);
+
+        $user_ip = $_SERVER['REMOTE_ADDR'];
+        error_log("CSRF TOKEN MISMATCH IN OAUTH LOGIN. " . " USER IP ADDRESS: " . xss_protect($user_ip));
+
+        header("Location: ../pages/oauth_security_pages/csrf_invalid.php");
+        exit();
+    }
+    // SECOND ONE HELPS AVOID REPLAY ATTACKS
+    unset($_SESSION['oauth_state']);
+    $already_validated = true;
+    return true;
+}
 ?>
 <?php 
 

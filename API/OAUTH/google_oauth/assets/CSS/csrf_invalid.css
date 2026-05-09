@@ -1,0 +1,14 @@
+.security-icon {
+    font-size: 60px;
+    color: #d32f2f; /* Alert Red */
+    margin-bottom: 20px;
+}
+.error-title {
+    color: var(--gh-gray);
+    font-weight: 800;
+}
+.instruction {
+    color: #666;
+    margin: 15px 0 25px 0;
+    line-height: 1.6;
+}

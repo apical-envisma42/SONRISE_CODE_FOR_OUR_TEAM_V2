@@ -1,0 +1,108 @@
+:root {
+    --primary-blue: #f51000;
+    --accent-gold: #c22222;
+    --text-dark: #333;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --crimson-red: #dc3545;
+}
+
+.credits-section {
+    padding: 80px 5%;
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+.credits-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.credits-header h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.credits-grid {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.credit-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+    border-top: 4px solid var(--crimson-red);
+}
+
+.credit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(220, 53, 69, 0.15);
+}
+
+.credit-card h3 {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.credit-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.credit-card ul li {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    align-items: baseline;
+}
+
+.label-text {
+    color: #888;
+    font-weight: 500;
+}
+
+.value-text {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.credits-footer {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.btn-home {
+    display: inline-block;
+    background: var(--crimson-red);
+    color: var(--white) !important;
+    border: none;
+    padding: 0.8rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+}
+
+.btn-home:hover {
+    background: var(--accent-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+}
+
+.btn-home i {
+    margin-right: 8px; 
+}

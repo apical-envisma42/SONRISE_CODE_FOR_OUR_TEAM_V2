@@ -1,0 +1,164 @@
+/* --- Variables --- */
+:root {
+    --red: #de3b49;
+    --dark: #1a1a1a;
+    --gray: #888888;
+    --border: #dddddd;
+    --white: #ffffff;
+}
+
+/* --- Layout --- */
+.container {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 20px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.column-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* --- Card Styles --- */
+.outline-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+/* --- Streak Section --- */
+.streak-display {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 2rem;
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+}
+
+#streak-num {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--red);
+    display: block;
+}
+
+
+/* --- Interactive Genres --- */
+.genre-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 1.5rem 0;
+}
+
+.genre-item {
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.genre-item:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background: #fff5f5;
+    transform: translateY(-2px);
+    color: crimson;
+}
+
+/* --- Buttons & Links --- */
+.btn-outline {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 1.5px solid var(--red);
+    color: var(--red);
+    background: transparent;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: crimson;
+    text-align: center;
+}
+
+.btn-outline:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+.full-width { width: 100%; }
+
+.literature-cta {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hidden-msg { color: #28a745; font-weight: bold; display: none; text-align: center; }
+.muted-text { color: var(--gray); font-size: 0.95rem; }
+
+/* --- Responsive Design --- */
+
+@media (max-width: 768px) {
+    .container {
+        margin: 1.5rem auto; /* Reduce top margin on mobile */
+    }
+
+    .welcome-header h1 {
+        font-size: 1.8rem; /* Scale down the title */
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Stack the Streak and Genres vertically */
+        gap: 1.5rem;
+    }
+
+    .outline-card {
+        padding: 1.5rem; /* Reduce internal padding */
+    }
+
+    .streak-display {
+        padding: 1rem;
+    }
+
+    #streak-num {
+        font-size: 3rem; /* Slightly smaller streak number */
+    }
+
+    .literature-cta {
+        flex-direction: column; /* Stack "Looking for more?" and the button */
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .genre-grid {
+        justify-content: center; /* Center genres for easier thumb-tapping */
+    }
+}
+
+@media (max-width: 480px) {
+    .genre-item {
+        width: 100%; /* Make genre buttons full width on very small phones */
+        text-align: center;
+    }
+}

@@ -1,0 +1,130 @@
+    :root {
+        --error-red: #ff4d4d;
+        --gh-gray: #24292e;
+        --green-color: #004b23;
+        --orange-color: #ffcd00;
+        --light-pink-cream: #ffebeb;
+    }
+
+    .error-wrapper {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at top right, #ffffff, #e9ecef);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: hidden;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 50px;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        text-align: center;
+        max-width: 550px;
+        width: 90%;
+        animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+.icon-box {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff200;
+    object-fit: cover;
+    /* mask-image: radial-gradient(circle, black 60%, rgba(0, 0, 0, 0) 100%); */
+    /* -webkit-mask-image: radial-gradient(circle, black 60%, rgba(0, 0, 0, 0) 100%); */
+    
+    background-color: #ffffff; 
+    background-image: url('/images/fixmyareaghana-high-resolution-logo.png');
+    background-size: 80%; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    animation: imgDance 1s ease-in infinite alternate;
+}
+
+.icon-box img {
+    animation: floatingBreathing 3s ease-in-out infinite alternate;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes floatingBreathing {
+    0% {
+        transform: translateY(0px) scale(1);
+
+    } 
+    100% {
+        transform: translateY(-12px) scale(1.05);
+    }
+}
+    .error-card h1 {
+        color: var(--gh-gray);
+        font-weight: 800;
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .error-card p {
+        color: #57606a;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 35px;
+    }
+
+    .action-bar {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .btn-action {
+        padding: 12px 28px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-primary-err {
+        background: var(--gh-gray);
+        color: white;
+    }
+
+    .btn-primary-err:hover {
+        background: #000;
+        transform: scale(1.05);
+        color: #fff;
+    }
+
+    .btn-secondary-err {
+        background: #fff;
+        color: var(--gh-gray);
+        border: 1px solid var(--green-color);
+    }
+
+    .btn-secondary-err:hover {
+        background: #f6f8fa;
+    }
+
+    .auto-redirect {
+        margin-top: 25px;
+        font-size: 0.85rem;
+        color: #8c959f; 
+    }
+
+    #countdown { font-weight: bold; color: var(--green-color); }

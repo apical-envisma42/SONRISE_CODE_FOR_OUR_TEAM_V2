@@ -4,7 +4,7 @@ require_once __DIR__ . '/session_init.php';
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 // CHANGE TO DOMAIN NAME DURING PROD
-define('BASE_URL', 'http://localhost/SONRISE/');
+define('BASE_URL', 'http://localhost/sonrise/');
 define('ROOT_PATH_CORE_FILES', '/../');
 
 use Dotenv\Dotenv;
@@ -12,12 +12,11 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__ . ROOT_PATH_CORE_FILES);
 $dotenv->load();
 
-
 // $dotenv->required(['DB_HOSTNAME', 'DB_USERNAME', 'DB_NAME']);
 
 
-$app_dev_mode            = strtolower($_ENV['APP_ERR_MODE']);
-$APP_MAINTENANCE_MODE    = strtoupper($_ENV['APP_MAINTENANCE_MODE']);
+$app_dev_mode            = $_ENV['APP_ERR_MODE'];
+$APP_MAINTENANCE_MODE    = $_ENV['APP_MAINTENANCE_MODE'];
 
 // ERROR LOG SETTINGS
 ini_set('log_errors', 'On');
@@ -36,7 +35,7 @@ endif;
 $current_page = basename($_SERVER['PHP_SELF']);
 
 if($APP_MAINTENANCE_MODE === 'ON' && $current_page !== 'maintenance_page.php') {
-    header("Location: ./pages/maintenance_page.php");
+    header("Location: ./pages/HTML/maintenance_page.php");
     exit();
 }
 
@@ -81,7 +80,7 @@ try {
     $_SESSION['error_title'] = $error_title;
     $_SESSION['error_msg']   = $error_msg;
 
-    header("Location: ./display_error.php");
+    header("Location: ../pages/error_pages/display_error.php");
     exit();
 }
 

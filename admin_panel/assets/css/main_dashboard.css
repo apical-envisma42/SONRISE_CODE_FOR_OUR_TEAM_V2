@@ -1,0 +1,47 @@
+.welcome-banner {
+    background: linear-gradient(135deg, var(--sidebar-bg) 0%, #2d3748 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 6px solid var(--crimson-red);
+}
+
+.welcome-text h2 { margin-bottom: 5px; font-size: 1.8rem; }
+.welcome-text p { opacity: 0.8; font-size: 0.95rem; }
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.action-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--crimson-red);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.action-card i {
+    font-size: 2rem;
+    color: var(--crimson-red);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.action-card span { font-weight: 600; }

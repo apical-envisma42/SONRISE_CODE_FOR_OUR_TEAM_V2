@@ -1,0 +1,19 @@
+# SONRISE Robots.txt
+User-agent: *
+
+# Allow crawling of the main landing page and public assets
+Allow: /
+Allow: /assets/CSS/
+Allow: /assets/images/
+
+# Block backend logic and sensitive directories
+Disallow: /API/
+Disallow: /core_files/
+Disallow: /JS/
+Disallow: /vendor/
+
+# Block private user areas
+Disallow: /pages/PHP/user_inbox.php
+
+# Link to your sitemap
+Sitemap: https://son-rize.com/sitemap.xml

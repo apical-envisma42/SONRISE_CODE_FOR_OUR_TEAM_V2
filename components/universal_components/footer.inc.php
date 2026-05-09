@@ -10,6 +10,7 @@
             <a href="./poems.php">Library</a>
             <a href="#">Join</a>
             <a href="#">Legal</a>
+            <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/credits.php">Credits</a>
         </nav>
 
         <div class="footer-socials">

@@ -1,0 +1,214 @@
+:root {
+    --sidebar-bg: #1e293b;
+    --main-bg: #f8fafc;
+    --primary: #4f46e5;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --primary-red: #dc3545; 
+    --accent-gold: #FFD700;
+    --text-dark: #333;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --crimson-red: #dc3545;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { display: flex; background: var(--main-bg); min-height: 100vh; }
+
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: bold; margin-bottom: 40px; }
+.logo i { color: var(--crimson-red); font-size: 2rem; }
+
+.nav-links { list-style: none; flex-grow: 1; }
+.nav-links li { margin-bottom: 10px; }
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.nav-links li.active a, .nav-links a:hover {
+    background: var(--crimson-red);
+    color: white;
+}
+
+.main-content { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
+
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;           
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e2e8f0; 
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff;             
+    padding: 5px 15px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.user-info img {
+    width: 40px;                  
+    height: 40px;
+    border-radius: 50%;           
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.9rem;
+}
+
+/* SaaS Style Badges */
+.badge {
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge.active {
+    background-color: #d1fae5;
+    color: #065f46; /* Deep Green */
+}
+
+.badge.pending {
+    background-color: #fef3c7;
+    color: #92400e; /* Deep Orange/Amber */
+}
+
+.badge.inactive {
+    background-color: #fee2e2;
+    color: #991b1b; /* Deep Red */
+}
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+.stat-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+.stat-card i { font-size: 2.5rem; color: #000; background: var(--crimson-red); padding: 10px; border-radius: 10px; }
+
+.table-container { background: var(--white); border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+.table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+#userSearch { padding: 10px 15px; border: 1px solid #ddd; border-radius: 8px; width: 300px; }
+
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th { padding: 15px; color: var(--text-light); border-bottom: 2px solid #f1f5f9; }
+td { padding: 15px; border-bottom: 1px solid #f1f5f9; color: var(--text-dark); }
+
+.user-cell { display: flex; align-items: center; gap: 10px; }
+.user-cell img { border-radius: 50%; }
+
+.badge { padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+.badge.active { background: #dcfce7; color: #166534; }
+.b
+
+
+.btn-edit:hover {
+    background: #4338ca;
+    color: #ffffff;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.btn-delete { 
+    background: #fee2e2; 
+    color: #b91c1c; 
+    border: none; 
+    padding: 8px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    margin-left: 5px; 
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background: #b91c1c;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Update the Action column cell */
+td:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Proper spacing between Edit and Delete */
+    justify-content: flex-start; /* Aligns buttons to the left of the cell */
+    min-width: 100px; /* Prevents the buttons from squishing */
+}
+
+/* Ensure buttons are consistent sizes */
+.btn-edit, .btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    padding: 0; /* Remove padding to keep the circle/square perfect */
+    margin: 0;  /* Reset margins to rely on 'gap' from the parent */
+}
+
+/* Optional: Fix the badge class which was cut off in your file */
+.badge.pending { 
+    background: #fef9c3; 
+    color: #854d0e; 
+}
+.badge.inactive { 
+    background: #fee2e2; 
+    color: #991b1b; 
+}
+
+.table-container table td .btn-edit { 
+    background-color: #e0e7ff !important; 
+    color: #4338ca; 
+    border: none; 
+    padding: 8px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms ease-in;
+}
+
+.table-container table td .btn-edit:hover {
+         background: #1702ff;
+    color: #8513cc;
+    transform: translateY(-2px); 
+
+}
+
+.action-cell form {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}

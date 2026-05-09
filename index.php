@@ -22,9 +22,9 @@
                         <i class="fa-brands fa-google"></i>
                         <span>Continue with Google</span>
                     </a> -->
-                     <a href="./pages/HTML/login.html" type="submit" class="social-btn">
+                     <a href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/index.php" class="social-btn">
                         <i class="fas fa-user"></i>
-                        <span>GO TO LOGIN PAGE</span>
+                        <span>Click To Login To <span style="color:#dc3545;">SONRISE</span></span>
                     </a>
                     
                     <!-- <button type="submit" class="social-btn">

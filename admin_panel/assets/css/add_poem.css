@@ -1,0 +1,160 @@
+:root {
+    --crimson-red: #dc3545;
+    --crimson-hover: #b91c1c;
+}
+
+.main-content {
+    background-color: #f4f7f6;
+}
+
+.form-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    max-width: 850px;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.form-header {
+    background: var(--crimson-red);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-header i { font-size: 1.8rem; }
+.form-header h2 { font-size: 1.2rem; margin: 0; }
+
+.form-body { padding: 40px; }
+
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Themed Focus State */
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: var(--crimson-red);
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1);
+    outline: none;
+}
+
+.form-group textarea {
+    height: 250px;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Styled File Input */
+input[type="file"] {
+    background: #f8fafc;
+    padding: 10px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    border-color: var(--crimson-red);
+}
+
+/* Styled Select Menu */
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+select:focus {
+    border-color: var(--crimson-red);
+}
+
+/* Button with your Crimson Red theme */
+.btn-publish {
+    background: var(--crimson-red);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-publish:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+}
+
+.btn-publish {
+    background: var(--crimson-red);
+    color: white;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.btn-publish:hover {
+    background: var(--crimson-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(220, 53, 69, 0.2);
+}
+
+/* Sidebar override for this page */
+.nav-links li.active a {
+    background: var(--crimson-red) !important;
+}
