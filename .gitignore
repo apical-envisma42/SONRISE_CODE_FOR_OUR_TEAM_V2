@@ -16,4 +16,4 @@ API/OAUTH/google_oauth/LOGS/
 .env
 
 # Ignore the entire config components directory
-core_files/config_components/
+core_files/config_components/API_CONFIG_COMPONENTS

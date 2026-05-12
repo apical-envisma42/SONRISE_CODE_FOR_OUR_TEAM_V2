@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . DIRECTORY_SEPARATOR .'../../../../core_files/config.php';
+require_once __DIR__ . '../';
 require_once __DIR__ . DIRECTORY_SEPARATOR .'../../../../core_files/session_init.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR .'../../../../core_files/functions.php'; 
 ?>
