@@ -1,0 +1,37 @@
+# ----------------------------------------------------------------------
+# 2. Security Enhancements (Customized for SONRISE)
+# ----------------------------------------------------------------------
+
+# Disable directory browsing
+Options -Indexes
+
+# Protect sensitive project files and the entire core_files directory
+# Covers composer files, LICENSE, and the core_files path from image_8d71e7.png
+<FilesMatch "^(\.env|\.htaccess|composer\.(|lock)|.*\.(bak|config|sql|log|ini|sh))$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+
+# Specifically block access to the .htaccess file itself
+<Files .htaccess>
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</Files>
+
+# ----------------------------------------------------------------------
+# 3. Custom Error Pages
+# ----------------------------------------------------------------------
+
+# Point to the specific 404 HTML file in your directory structure
+ErrorDocument 404 /pages/HTML/404_page.html

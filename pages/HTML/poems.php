@@ -31,8 +31,7 @@ error_reporting(E_ALL);
 global $dbconn;
 
 $sql = "SELECT poem_title, poem_slug, poem_genre, poem_author, poem_image, poem_content, created_at 
-        FROM poems 
-        ORDER BY created_at DESC";
+        FROM poems";
 
 $result = mysqli_query($dbconn, $sql);
 
