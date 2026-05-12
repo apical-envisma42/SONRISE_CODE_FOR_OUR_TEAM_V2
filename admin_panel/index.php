@@ -4,15 +4,16 @@ require_once __DIR__ . '/../core_files/session_init.php';
 require_once __DIR__ . '/../core_files/functions.php'; 
 require_once __DIR__ . '/components/defined_code_admin.php';
 
+$reject_Admin_request_location_header = __DIR__ . '/../index.php';
 $location_header  = __DIR__ . '/../API/OAUTH/google_oauth/pages/user_pages/profile.php';
 check_logged_in($location_header);
-check_account_level_for_admin();
+check_account_level_for_admin($reject_Admin_request_location_header);
+
+global $dbconn;
 
 $total_users_query = mysqli_query($dbconn, "SELECT COUNT(id) as total FROM oauth_users");
 $total_users = mysqli_fetch_assoc($total_users_query)['total'];
 
-$recent_users_sql = "SELECT oauth_full_name, oauth_email, created_at, account_status FROM oauth_users ORDER BY created_at DESC LIMIT 5";
-$recent_query = mysqli_query($dbconn, $recent_users_sql);
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +73,7 @@ $recent_query = mysqli_query($dbconn, $recent_users_sql);
 
         <div class="table-container">
             <div class="table-header">
-                <h2>Recent Joiners</h2>
+                <h2>Last 5 Recent Joiners</h2>
                 <a href="all_users.php" style="color: var(--crimson-red); text-decoration: none; font-size: 0.9rem; font-weight: 600;">View All</a>
             </div>
             <table>
@@ -85,8 +86,12 @@ $recent_query = mysqli_query($dbconn, $recent_users_sql);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($user = mysqli_fetch_assoc($recent_query)): 
-                        $status_class = get_account_colour($user['account_status']);
+                    <?php 
+                    $last_5_users_joined = get_recent_active_users_for_admin($dbconn);
+                    if(!empty($last_5_users_joined)) {
+                        foreach($last_5_users_joined as $user) {
+                            $status_class = get_account_colour($user['account_status']);
+                    }
                     ?>
                     <tr>
                         <td><strong><?= xss_protect($user['oauth_full_name']); ?></strong></td>
@@ -94,7 +99,13 @@ $recent_query = mysqli_query($dbconn, $recent_users_sql);
                         <td><span class="badge <?= $status_class; ?>"><?= ucfirst($user['account_status']); ?></span></td>
                         <td><?= date("M d, H:i", strtotime($user['created_at'])); ?></td>
                     </tr>
-                    <?php endwhile; ?>
+                    <?php 
+                    } else { 
+?>
+    <tr>
+        <td colspan="4" style="text-align:center;">No new users joined in the last 2 weeks.</td>
+    </tr>
+<?php }; ?>
                 </tbody>
             </table>
         </div>

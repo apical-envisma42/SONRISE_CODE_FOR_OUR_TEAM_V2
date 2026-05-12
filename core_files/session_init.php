@@ -8,7 +8,7 @@ ini_set('session.cookie_secure', $is_secure ? 1 : 0);
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     $current_domain = ($_SERVER['HTTP_HOST'] === 'localhost') ? '' : 'fixmyareaghana.com';
-    session_name("FMAG_SECURE");
+    session_name("SNR_SESS");
     session_set_cookie_params([
         'lifetime' => $session_duration,
         'path' => '/',

@@ -4,10 +4,12 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/config.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/session_init.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/functions.php';
 
-$google_client = new Google\Client;
-// checkuserloginsendbacktohome();
+$header_back =  __DIR__ . '/../../../pages/HTML/poems.php';
 
-$oauth_state = bin2hex(random_bytes(35));
+$google_client = new Google\Client;
+checkuserloginsendbacktohome($header_back);
+
+$oauth_state = generate_oauth_state();
 
 $_SESSION['oauth_state'] = $oauth_state;
 

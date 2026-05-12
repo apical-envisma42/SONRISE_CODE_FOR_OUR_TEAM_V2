@@ -1,5 +1,9 @@
 <?php
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../../core_files/config.php';
+$config_path = __DIR__ . '/../../../../core_files/config.php';
+if (!file_exists($config_path)) {
+    die("Path error: Cannot find config.php at " . realpath($config_path));
+}
+require_once $config_path;
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../../core_files/session_init.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../../core_files/functions.php';
 
@@ -113,7 +117,7 @@ $_SESSION['account_level']  = $fetched_user_level;
 
 session_write_close(); 
 mysqli_close($dbconn);
-header("Location: ../../../../pages/user_pages/profile.php");
+header("Location: ../../../../pages/HTML/poems.php");
 exit();
 
 ?>

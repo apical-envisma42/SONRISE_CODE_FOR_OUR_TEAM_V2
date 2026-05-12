@@ -1,5 +1,6 @@
 <?php
 // Ensure session_start() has been called in your header or session_init.php
+$current_page = basename($_SERVER['SCRIPT_NAME']); 
 $login_link_class = "";
 $profile_img_class = "";
 
@@ -25,49 +26,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         <input type="checkbox" id="menu-bar">
         <label for="menu-bar"><i class="fas fa-bars"></i></label>
 
-<?php
-
-    use phpseclib3\Crypt\EC\BaseCurves\Base;
-$current_page = basename($_SERVER['SCRIPT_NAME']); 
-?>
-<style>
-.nav-profile-img {
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
-    border-radius: 50%; /* Makes the image circular */
-    border: 2px solid var(--crimson-red);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: block; /* Removes any unwanted whitespace below the image */
-}
-
-.nav-profile-img:hover {
-    transform: scale(1.1);
-    border-color: var(--accent-gold);
-    box-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
-}
-
-/* Ensure the list item aligns vertically with text links */
-.nav-links li {
-    display: flex;
-    align-items: center;
-}
-
-/* RESPONSIVE TWEAK: Center the image in the mobile menu */
-@media (max-width: 880px) {
-    .nav-profile-img {
-        margin: 1rem 0;
-        width: 60px;
-        height: 60px;
-    }
-}
-
-.hidden_img, .hidden_login {
-    display: none !important;
-}
-</style>
-
 <ul class="nav-links">
     <li>
         <a href="../../index.php" class="<?= ($current_page == 'index.php') ? 'active' : '' ?>">Home</a>
@@ -80,7 +38,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
     </li>
 
     <li>
-        <a href="<?= xss_protect(BASE_URL); ?>./pages/user_pages/user_inbox.php" class="<?= ($current_page == 'about.php') ? 'active' : '' ?>">Your Inbox</a>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/user_pages/user_inbox.php" class="<?= ($current_page == 'user_inbox.php') ? 'active' : '' ?>">Your Inbox</a>
     </li>
 
 <li class="<?= xss_protect($login_link_class); ?>">
@@ -88,8 +46,8 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
     </li>
 
     <li class="<?= xss_protect($profile_img_class); ?>">
-        <a href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/pages/user_pages/profile.php">
-            <img src="<?= xss_protect($_SESSION['user_picture'] ?? ''); ?>" alt="User Profile" class="nav-profile-img">
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/user_pages/profile.php">
+            <img src="<?= xss_protect($_SESSION['user_picture']) ?? '../../assets/Images/default_avatar.svg'; ?>" alt="User Profile" class="nav-profile-img">
         </a>
     </li>
 

@@ -14,3 +14,6 @@ API/OAUTH/google_oauth/LOGS/
 # Traditional PHP/Composer ignores
 /vendor/
 .env
+
+# Ignore the entire config components directory
+core_files/config_components/

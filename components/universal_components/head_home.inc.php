@@ -14,17 +14,17 @@ require_once __DIR__ . '/../defined_code.php';
     <meta name="author" content="Gideon Akomea Peprah">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://son-rize.com/">
+    <meta property="og:url" content="https://son-rize.infinityfree.me">
     <meta property="og:title" content="SON-RIZE | A Sanctuary for Poetry, Stories & Literature">
     <meta property="og:description" content="A collaborative, open-source sanctuary for writers to publish stories and poems. Experience a modern, responsive design and secure community content.">
-    <meta property="og:image" content="https://SON-RIZE/assets/Logos/sonrise.png">
+    <meta property="og:image" content="https://son-rize.infinityfree.me/assets/Logos/sonrise.png">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://son-rize.com/">
+    <meta property="twitter:url" content="https://son-rize.infinityfree.me">
     <meta property="twitter:title" content="SONRISE | A Sanctuary for Poetry, Stories & Literature">
     <meta property="twitter:description" content="Join the SONRISE community. A responsive, secure platform for dark gothic thrillers and poetic writing.">
-    <meta property="twitter:image" content="https://SON-RIZE/assets/Logos/sonrise.png">
+    <meta property="twitter:image" content="https://son-rize.infinityfree.meassets/Logos/sonrise.png">
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#dc3545"> <link rel="canonical" href="https://son-rize.com/index.php">
+    <meta name="theme-color" content="#dc3545"> <link rel="canonical" href="https://son-rize.infinityfree.meindex.php">
     
     <!-- DYNAMIC TITLE -->
     <title><?= xss_protect(get_dynamic_title()); ?></title>
@@ -35,7 +35,7 @@ require_once __DIR__ . '/../defined_code.php';
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>/assets/CSS/about.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/maintenance_page.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/credits.css">
-    <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/assets/CSS/oauth_profile.css">
+    <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/oauth_profile.css">
     <link rel="shortcut icon" href="http://<?= xss_protect($_SERVER['HTTP_HOST']) ?>/sonrise/assets/Logos/sonrise.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>

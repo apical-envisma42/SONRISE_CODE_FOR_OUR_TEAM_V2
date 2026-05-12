@@ -5,9 +5,11 @@ require_once __DIR__ . '/../../core_files/functions.php';
 require_once __DIR__ . '/../components/defined_code_admin.php';
 
 $location_header  = __DIR__ . '/../../API/OAUTH/google_oauth/pages/user_pages/profile.php';
+$location_admin_reject_header = __DIR__ . '/../../index.php';
 check_logged_in($location_header);
 
-check_account_level_for_admin();
+check_account_level_for_admin($location_admin_reject_header);
+global $dbconn;
 ?>
 
 <!DOCTYPE html>

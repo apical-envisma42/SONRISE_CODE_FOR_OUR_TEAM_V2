@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../../../../../components/universal_components/head_home.inc.php'; 
+<?php require_once __DIR__ . '/../../components/universal_components/head_home.inc.php'; 
 $location_header = __DIR__ . '/../../index.php';
 check_logged_in($location_header);
 
@@ -46,16 +46,40 @@ if($_SESSION['oauth_provider'] === 'google') {
         </div>
 
         <!-- Stacked Action Buttons -->
-         <form action="../../../../../site_logic/logout/account_logout.php" method="post">
-        <div class="profile-actions">
-            <a href="../../../../../pages/HTML/poems.php" class="btn-home">
-                <i class="fa-solid fa-house"></i> Back To Stories
-            </a>
-            <button type="submit" name="account_logout" class="btn-signout">
-                <input type="hidden" name="csrf_token" value="<?= xss_protect($_SESSION['csrf_token']) ?>">
-                <i class="fa-solid fa-right-from-bracket"></i> Sign Out
-            </button>
+         <form action="../../site_logic/logout/account_logout.php" method="post">
+        <input type="hidden" name="csrf_token" value="<?= xss_protect($_SESSION['csrf_token']) ?>">
+<div class="profile-actions">
+    <a href="../HTML/poems.php" class="btn-home">
+        <i class="fa-solid fa-house"></i> Back To Stories
+    </a>
+
+        <a href="./user_inbox.php" class="btn-inbox">
+        <i class="fa-solid fa-house"></i> Check Your Inbox
+    </a>
+
+    <button type="button" class="btn-signout" onclick="toggleLogoutModal()">
+        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+    </button>
+</div>
+
+<div id="logoutModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <h3>Confirm Sign Out</h3>
+            <p>Are you sure you want to leave your session?</p>
         </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-cancel" onclick="toggleLogoutModal()">No, Stay</button>
+            <form action="../../site_logic/logout/account_logout.php" method="post" style="display: inline;">
+                <input type="hidden" name="csrf_token" value="<?= xss_protect($_SESSION['csrf_token']) ?>">
+                <button type="submit" name="account_logout" class="btn-confirm">Yes, Sign Out</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../../assets/JS/sign_out_modal.js"></script>
         </form>
     </div>
 </section>
