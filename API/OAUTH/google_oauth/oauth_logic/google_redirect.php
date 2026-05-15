@@ -10,6 +10,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../../core_files/functions.p
 // MAILING LIBRARY CODE
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../../site_logic/MAIL_PHP/email_send.php';
 
+global $dbconn;
 
 $google_client = new Google\Client;
 $oauth_provider = "google";
@@ -61,8 +62,7 @@ try {
 
     $oauth = new Google\Service\Oauth2($google_client);
 
-    $google_userinfo  = $oauth->userinfo->get();
-
+    $google_userinfo  =     $oauth->userinfo->get();
     $oauth_uid        =     $google_userinfo->id;
     $oauth_email      =     $google_userinfo->email;
     $oauth_familyname =     $google_userinfo->familyName;
@@ -72,11 +72,11 @@ try {
     $ip_address       =     $_SERVER['REMOTE_ADDR'];
 
 // CHECKING/INSERTION OF USER DATA
-    $sql_find = "SELECT acc_user_level FROM oauth_users WHERE oauth_uid = ?";
+    $sql_find = "SELECT acc_user_level, created_at FROM oauth_users WHERE oauth_uid = ?";
     $stmt_find = mysqli_prepare($dbconn, $sql_find);
     mysqli_stmt_bind_param($stmt_find, "s", $oauth_uid);
     mysqli_stmt_execute($stmt_find);
-    mysqli_stmt_bind_result($stmt_find, $fetched_user_level);
+    mysqli_stmt_bind_result($stmt_find, $fetched_user_level, $account_creation);
     mysqli_stmt_store_result($stmt_find);
     $user_exists = mysqli_stmt_num_rows($stmt_find) > 0;
 
@@ -107,13 +107,14 @@ if(!$user_exists) {
 
 session_regenerate_id(true);
 
-$_SESSION['logged_in']      = true;
-$_SESSION['user_email']     = $oauth_email;
-$_SESSION['ip_address']     = $ip_address;
-$_SESSION['full_name']      = $oauth_name;
-$_SESSION['user_picture']   = $oauth_picture;
-$_SESSION['oauth_provider'] = $oauth_provider;
-$_SESSION['account_level']  = $fetched_user_level;
+$_SESSION['logged_in']        = true;
+$_SESSION['user_email']       = $oauth_email;
+$_SESSION['ip_address']       = $ip_address;
+$_SESSION['full_name']        = $oauth_name;
+$_SESSION['user_picture']     = $oauth_picture;
+$_SESSION['oauth_provider']   = $oauth_provider;
+$_SESSION['account_level']    = $fetched_user_level;
+$_SESSION['account_creation'] = $account_creation;
 
 session_write_close(); 
 mysqli_close($dbconn);

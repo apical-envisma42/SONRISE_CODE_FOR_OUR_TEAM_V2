@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Session Expired | Fix My Area Ghana</title>
-    <link rel="stylesheet" href="../../assets/CSS/box_template.css">
-    <link rel="stylesheet" href="/assets/CSS/csrf_invalid.css">
+    <link rel="stylesheet" href="/../../assets/CSS/box_template.css">
+    <link rel="stylesheet" href="/../../assets/CSS/csrf_invalid.css">
 </head>
 <body>
     <div class="profile-card">

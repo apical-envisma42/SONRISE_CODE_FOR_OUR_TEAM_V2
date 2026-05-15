@@ -4,12 +4,19 @@ require_once __DIR__ . '/../../core_files/session_init.php';
 require_once __DIR__ . '/../../core_files/functions.php'; 
 require_once __DIR__ . '/../components/defined_code_admin.php';
 
-$location_header  = __DIR__ . '/../../API/OAUTH/google_oauth/pages/user_pages/profile.php';
-$location_admin_reject_header = __DIR__ . '/../../index.php';
-check_logged_in($location_header);
+if(!is_admin()) {
+    header("Location: ../pages/user_pages/profile.php");
+}
 
-check_account_level_for_admin($location_admin_reject_header);
+if(!check_logged_in()) {
+    header("Location: ../pages/user_pages/profile.php");
+}
+
 global $dbconn;
+
+$total_users_query = mysqli_query($dbconn, "SELECT COUNT(id) as total FROM oauth_users");
+$total_users = mysqli_fetch_assoc($total_users_query)['total'];
+
 ?>
 
 <!DOCTYPE html>
@@ -39,14 +46,14 @@ global $dbconn;
             <div class="stat-card">
                 <i class='bx bxs-user-check'></i>
                 <div>
-                    <h3>1,240</h3>
+                    <h3><?= number_format($total_users); ?></h3>
                     <p>Total Users</p>
                 </div>
             </div>
             <div class="stat-card">
                 <i class='bx bxs-user-plus'></i>
                 <div>
-                    <h3>12</h3>
+                    <h3>Unknown</h3>
                     <p>New Today</p>
                 </div>
             </div>

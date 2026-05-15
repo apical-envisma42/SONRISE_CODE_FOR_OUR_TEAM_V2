@@ -2,10 +2,14 @@
 require_once __DIR__ . '/../../core_files/config.php';
 require_once __DIR__ . '/../../core_files/session_init.php';
 require_once __DIR__ . '/../../core_files/functions.php'; 
-$location_header  = __DIR__ . '/../../API/OAUTH/google_oauth/pages/user_pages/profile.php';
-$location_admin_reject_header = __DIR__ . '/../../index.php';
-check_logged_in($location_header);
-check_account_level_for_admin($location_admin_reject_header);
+
+if(!is_admin()) {
+    header("Location: ../pages/user_pages/profile.php");
+}
+
+if(!check_logged_in()) {
+    header("Location: ../pages/user_pages/profile.php");
+}
 
 $token = $_SESSION['csrf_token'] ?? '';
 global $dbconn;

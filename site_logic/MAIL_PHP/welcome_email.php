@@ -1,79 +1,276 @@
+<?php
+/**
+ * Son-Rise Platform - Welcome & Authentication Security Email Template
+ * Refactored with Crimson Red Branding & Literary Accents
+ */
+
+// Safety check to verify your sanitization function exists in the current scope
+if (!function_exists('xss_protect')) {
+    function xss_protect($string) {
+        return htmlspecialchars($string ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5 | ENT_DISALLOWED, 'UTF-8');
+    }
+}
+
+// Sample variables for contextual fallback testing
+$recepient_name = $recepient_name ?? 'Literary Explorer';
+$api_provider = $api_provider ?? 'Google';
+$ip_address = $ip_address ?? $_SERVER['REMOTE_ADDR'] ?? 'Unknown IP';
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Fix My Area Ghana</title>
+    <title>Welcome to Son-Rise</title>
     <style>
-        /* Base styles */
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.6; color: #333; background-color: #f7f9fb; margin: 0; padding: 0; }
-        table { border-collapse: collapse; width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+        /* Embedded fallback styles for compliant clients */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
+            -webkit-font-smoothing: antialiased; 
+            font-size: 15px; 
+            line-height: 1.6; 
+            color: #333333; 
+            background-color: #f8f9fa; 
+            margin: 0; 
+            padding: 0; 
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+        }
         
-        /* Layout */
-        .header { background-color: #004d30; padding: 30px; text-align: center; color: #ffffff; }
-        .logo { max-width: 150px; height: auto; }
-        .content { padding: 40px; }
-        .footer { padding: 30px; background-color: #f0f3f5; border-top: 1px solid #e1e8ed; text-align: center; font-size: 12px; color: #777; }
+        /* Layout Structure */
+        .email-wrapper {
+            background-color: #f8f9fa;
+            padding: 40px 20px;
+        }
+        .email-container {
+            max-width: 600px; 
+            margin: 0 auto; 
+            background-color: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border-top: 6px solid #dc3545; /* Crimson Red Top Accent Border */
+        }
+        .header { 
+            background-color: #ffffff; 
+            padding: 45px 40px 30px 40px; 
+            text-align: center; 
+        }
+        .content { 
+            padding: 0 40px 40px 40px; 
+        }
+        .footer { 
+            padding: 35px 40px; 
+            background-color: #fafafa; 
+            border-top: 1px solid #f0f0f0; 
+            text-align: center; 
+            font-size: 13px; 
+            color: #777777; 
+        }
 
         /* Typography */
-        h1 { font-size: 22px; font-weight: 700; color: #ffffff; margin-top: 15px; margin-bottom: 0; }
-        h2 { font-size: 18px; color: #004d30; margin-bottom: 10px; }
-        h3 { font-size: 16px; color: #333; margin-top: 25px; margin-bottom: 5px; }
-        p { margin-top: 0; margin-bottom: 15px; }
-        strong { font-weight: 600; color: #333; }
+        h1 { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #333333; 
+            margin: 0 0 5px 0; 
+            letter-spacing: -0.5px;
+        }
+        h1 span {
+            color: #dc3545; /* Crimson Red brand split */
+        }
+        .subtitle {
+            font-size: 12px;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        h2 { 
+            font-size: 20px; 
+            font-weight: 700;
+            color: #333333; 
+            margin-top: 0;
+            margin-bottom: 15px; 
+        }
+        h3 { 
+            font-size: 16px; 
+            font-weight: 700;
+            color: #333333; 
+            margin-top: 30px; 
+            margin-bottom: 8px; 
+            border-bottom: 2px solid #dc3545;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+        p { 
+            margin-top: 0; 
+            margin-bottom: 18px; 
+            color: #555555;
+        }
+        strong { 
+            font-weight: 700; 
+            color: #222222; 
+        }
 
-        /* Accents */
-        .status-box { background-color: #f0f3f5; border-radius: 8px; border-left: 4px solid #ffd000; padding: 20px; margin: 25px 0; font-size: 13px; color: #555; }
-        .status-item { margin-bottom: 10px; }
-        .status-item strong { color: #004d30; }
+        /* Callout Box Refactored to Modern Soft Crimson */
+        .status-box { 
+            background-color: rgba(220, 53, 69, 0.04); 
+            border-radius: 16px; 
+            border-left: 4px solid #dc3545; 
+            padding: 22px; 
+            margin: 25px 0; 
+            font-size: 14px; 
+        }
+        .status-item { 
+            margin-bottom: 12px; 
+            color: #444444;
+            display: flex;
+            justify-content: space-between;
+        }
+        .status-item:last-child {
+            margin-bottom: 0;
+        }
+        .status-item strong { 
+            color: #777777; 
+            font-weight: 500;
+        }
+        .status-value {
+            font-weight: 700;
+            color: #333333;
+        }
+        .status-value.accent {
+            color: #dc3545;
+        }
 
-        /* Buttons & Links */
-        .btn-container { margin: 30px 0; text-align: center; }
-        .btn-primary { background-color: #ffd000; color: #004d30; border-radius: 6px; display: inline-block; font-size: 14px; font-weight: 700; line-height: 50px; text-align: center; text-decoration: none; width: 220px; -webkit-text-size-adjust: none; transition: background-color 0.2s ease-in-out; }
-        .btn-primary:hover { background-color: #e6bc00; }
-        a.security-link { color: #d32f2f; text-decoration: underline; font-weight: 600; }
+        /* Buttons & Interactions matching UI Cards */
+        .btn-container { 
+            margin: 35px 0; 
+            text-align: center; 
+        }
+        .btn-primary { 
+            background-color: #dc3545; 
+            color: #ffffff !important; 
+            border-radius: 50px; 
+            display: inline-block; 
+            font-size: 15px; 
+            font-weight: 600; 
+            line-height: 52px; 
+            text-align: center; 
+            text-decoration: none; 
+            padding: 0 35px;
+            -webkit-text-size-adjust: none; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+        }
+        .btn-primary:hover { 
+            background-color: #c22222; 
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+            transform: translateY(-2px);
+        }
+        a.security-link { 
+            color: #dc3545; 
+            text-decoration: underline; 
+            font-weight: 600; 
+        }
+        a.security-link:hover {
+            color: #c22222;
+        }
 
-        /* Mobile adjustments */
-        @media only screen and (max-width: 620px) { table { width: 100% !important; border-radius: 0; } .header, .content { padding: 20px; } .btn-primary { width: 100%; max-width: 250px; } }
+        /* Mobile Adjustments */
+        @media only screen and (max-width: 620px) { 
+            .email-wrapper {
+                padding: 10px 0;
+            }
+            .email-container { 
+                width: 100% !important; 
+                border-radius: 0; 
+            } 
+            .header, .content { 
+                padding: 30px 20px; 
+            } 
+            .btn-primary { 
+                width: 100%; 
+                padding: 0;
+            } 
+            .status-item {
+                flex-direction: column;
+                gap: 2px;
+            }
+            .status-item style {
+                text-align: left;
+            }
+        }
     </style>
 </head>
-<body>
-    <table role="presentation">
+<body style="margin: 0; padding: 0; background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+    <table role="presentation" class="email-wrapper" cellspacing="0" cellpadding="0" width="100%">
         <tr>
-            <td class="header">
-                <img src="../site_images/fixmyareaghana-high-resolution-logo.png" alt="Fix My Area Ghana Logo" class="logo">
-                <h1>Authentication Success</h1>
-            </td>
-        </tr>
-        <tr>
-            <td class="content">
-                <p>Hello <strong><?php echo xss_protect($recepient_name); ?></strong>,</p>
-                <p>Your Fix My Area Ghana account was successfully accessed. This notification ensures you recognize this new connection.</p>
+            <td align="center">
                 
-                <div class="status-box">
-                    <div class="status-item"><strong>Provider:</strong> <?php echo ucfirst(xss_protect($api_provider)); ?> (OAuth)</div>
-                    <div class="status-item"><strong>Time:</strong> <?php echo date("F j, Y, g:i a"); ?> GMT</div>
-                    <div class="status-item"><strong>Method:</strong> Secure OAuth Authorization</div>
-                    <div class="status-item"><strong>IP:</strong> <?php echo xss_protect($ip_address); ?></div>
-                </div>
+                <table role="presentation" class="email-container" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="header">
+                            <h1>SON<span style="color: #dc3545;">RISE</span></h1>
+                            <p class="subtitle">A Community of Stories & Verse</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="content">
+                            <h2>Authentication Verified</h2>
+                            <p>Hello <strong><?php echo xss_protect($recepient_name); ?></strong>,</p>
+                            <p>Your secure account connection was accessed successfully. This automated notification ensures
+                            the real-time integrity and visibility of your profile security configuration.</p>
+                            
+                            <div class="status-box">
+                                <div class="status-item">
+                                    <strong>Auth Method:</strong> 
+                                    <span class="status-value"><?php echo ucfirst(xss_protect($api_provider)); ?> OAuth Link</span>
+                                </div>
+                                <div class="status-item">
+                                    <strong>Timestamp:</strong> 
+                                    <span class="status-value"><?php echo date("F j, Y, g:i a"); ?> UTC</span>
+                                </div>
+                                <div class="status-item">
+                                    <strong>Security Layer:</strong> 
+                                    <span class="status-value accent"><?= xss_protect($ip_address); ?></span>
+                                </div>
+                                <div class="status-item">
+                                    <strong>Device IP Address:</strong> 
+                                    <span class="status-value" style="font-family: monospace; font-size: 13px;"><?php echo xss_protect($ip_address); ?></span>
+                                </div>
+                            </div>
 
-                <div class="btn-container">
-                    <a href="https://your-fix-my-area.com/dashboard.php" class="btn-primary">Go to My Area Dashboard</a>
-                </div>
+                            <div class="btn-container">
+                                <a href="http://localhost/sonrise/pages/user_pages/poems.php" class="btn-primary">
+                                    Explore Library & Poems
+                                </a>
+                            </div>
 
-                <h3>Was This You?</h3>
-                <p>If you just authorized this connection, you can safely ignore this alert. If you are ever unsure, review your <a href="https://myaccount.google.com/connections" class="security-link">Google Security Settings</a>.</p>
+                            <h3>Verification Review</h3>
+                            <p>If you initiated this verification check, you can completely ignore this security alert. If you ever need to audit or manage active API handshakes linked to your profile, look over your dashboard's global <a href="https://myaccount.google.com/connections" class="security-link" target="_blank">Google External Connections</a>.</p>
 
-                <h3>Important</h3>
-                <p>If you did not authorize this access, please disconnect unrecognized sessions immediately through <strong>https://myaccount.google.com/connections</strong>. If you suspect your account is compromised, please update your main provider's (<?php echo ucfirst(xss_protect($api_provider ?? 'API PROVIDER')) ?>) credentials.</p>
-            </td>
-        </tr>
-        <tr>
-            <td class="footer">
-                <p>&copy; <?php echo date("Y"); ?> Fix My Area Ghana. All Rights Reserved.</p>
-                <p style="margin-bottom: 0;"><em>Improving our community, one report at a time.</em></p>
+                            <h3>Safety Notice</h3>
+                            <p>If you did not authorize this connection, please secure your keys immediately by severing unconfirmed session tokens. If you suspect any vulnerabilities with your credentials, we strongly encourage reviewing your primary identity verification profile configurations.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="footer">
+                            <p style="margin: 0 0 8px 0;">This communication is an essential security tracking update for your platform account context.</p>
+                            <p style="margin: 0; font-weight: 600;">&copy; <?php echo date("Y"); ?> Son-Rise Ecosystem. Developed securely on the LAMP Stack.</p>
+                        </td>
+                    </tr>
+                </table>
+
             </td>
         </tr>
     </table>
+
 </body>
 </html>

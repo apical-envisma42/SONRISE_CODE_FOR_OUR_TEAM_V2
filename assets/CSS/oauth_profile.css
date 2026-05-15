@@ -104,55 +104,112 @@
     gap: 12px;
 }
 
-.btn-home,
-.btn-signout,
-.btn-inbox {
+
+.profile-actions-grid {
+    width: 100%;
+    max-width: 320px; 
+    margin: 25px auto 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px;
-    border-radius: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.25s ease;
+    flex-direction: column;
+    gap: 12px; 
 }
 
-.btn-home {
-    background: #111;
-    color: white;
+.profile-actions-grid .logout-form-wrapper {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
 }
 
-.btn-home:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.btn-profile {
+    width: 100% !important;
+    height: 50px !important; 
+    box-sizing: border-box !important;
+    
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    
+    border-radius: 50px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    text-decoration: none !important;
+    
+    cursor: pointer !important;
+    border: 1px solid transparent !important;
+    background: none;
+    outline: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+
+.btn-admin {
+    background: #111115 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.btn-admin:hover {
+    background: #1e1e24 !important;
+    border-color: var(--crimson-red) !important;
+    transform: translateY(-2.5px);
+    box-shadow: 0 6px 18px rgba(220, 53, 69, 0.15);
+}
+
+.btn-explore {
+    background: #111115 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.btn-explore:hover {
+    background: #1e1e24 !important;
+    transform: translateY(-2.5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 .btn-inbox {
-    background: #ff0019;
-    color: black;
+    background: var(--crimson-red) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
 }
-
 .btn-inbox:hover {
-    filter: saturate(120);
-    transform: translate(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    background: var(--accent-gold) !important;
+    transform: translateY(-2.5px);
+    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.35);
 }
 
 .btn-signout {
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid rgba(220,53,69,0.3);
+    background: transparent !important;
+    color: #555555 !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
-
 .btn-signout:hover {
-    background: rgba(220,53,69,0.08);
-    border-color: var(--accent);
-    transform: translateY(-2px);
+    background: rgba(220, 53, 69, 0.04) !important;
+    border-color: var(--crimson-red) !important;
+    color: var(--crimson-red) !important;
+    transform: translateY(-2.5px);
 }
 
-            /* Modal Overlay */
-/* Generic Overlay Style for all modals */
+.btn-profile:active {
+    transform: translateY(-0.5px) !important;
+}
+
+.btn-profile i {
+    font-size: 0.95rem !important;
+    transition: transform 0.3s ease !important;
+}
+.btn-admin:hover i { transform: rotate(25deg); }
+.btn-explore:hover i { transform: scale(1.15); }
+.btn-inbox:hover i { transform: scale(1.15); }
+.btn-signout:hover i { transform: translateX(2px); }
+
+
 .modal-overlay {
     position: fixed;
     top: 0;

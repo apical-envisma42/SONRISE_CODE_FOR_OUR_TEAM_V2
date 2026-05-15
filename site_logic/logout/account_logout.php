@@ -1,7 +1,11 @@
 <?php require_once __DIR__ . '/../../core_files/functions.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['account_logout'])) {
-    form_validiate_post_csrf($_POST['csrf_token']);
+    
+if (!form_validate_post_csrf($_POST['csrf_token'] ?? null)) {
+        header("Location: ../../pages/security_pages/csrf_invalid.php"); //
+        exit(); 
+    }
 
     $_SESSION = [];
     

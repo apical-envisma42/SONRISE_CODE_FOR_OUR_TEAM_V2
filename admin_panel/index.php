@@ -4,16 +4,20 @@ require_once __DIR__ . '/../core_files/session_init.php';
 require_once __DIR__ . '/../core_files/functions.php'; 
 require_once __DIR__ . '/components/defined_code_admin.php';
 
-$reject_Admin_request_location_header = __DIR__ . '/../index.php';
-$location_header  = __DIR__ . '/../API/OAUTH/google_oauth/pages/user_pages/profile.php';
-check_logged_in($location_header);
-check_account_level_for_admin($reject_Admin_request_location_header);
+if(!is_admin()) {
+    header("Location: ../pages/user_pages/profile.php");
+}
 
+if(!check_logged_in()) {
+    header("Location: ../pages/user_pages/profile.php");
+}
 global $dbconn;
 
 $total_users_query = mysqli_query($dbconn, "SELECT COUNT(id) as total FROM oauth_users");
 $total_users = mysqli_fetch_assoc($total_users_query)['total'];
 
+$total_poems_query = mysqli_query($dbconn, "SELECT COUNT(id) as total FROM poems");
+$total_poems = mysqli_fetch_assoc($total_poems_query)['total'];
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +100,7 @@ $total_users = mysqli_fetch_assoc($total_users_query)['total'];
                     <tr>
                         <td><strong><?= xss_protect($user['oauth_full_name']); ?></strong></td>
                         <td><?= xss_protect($user['oauth_email']); ?></td>
-                        <td><span class="badge <?= $status_class; ?>"><?= ucfirst($user['account_status']); ?></span></td>
+                        <td><span class="badge <?= xss_protect($status_class); ?>"><?= ucfirst($user['account_status']); ?></span></td>
                         <td><?= date("M d, H:i", strtotime($user['created_at'])); ?></td>
                     </tr>
                     <?php 

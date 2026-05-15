@@ -4,10 +4,11 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/config.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/session_init.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/functions.php';
 
-$header_back =  __DIR__ . '/../../../pages/HTML/poems.php';
+if(check_logged_in()) {
+    header("Location: ../../../pages/user_pages/profile.php");
+}
 
 $google_client = new Google\Client;
-checkuserloginsendbacktohome($header_back);
 
 $oauth_state = generate_oauth_state();
 

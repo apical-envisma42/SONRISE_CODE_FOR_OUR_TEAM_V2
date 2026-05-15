@@ -8,21 +8,21 @@ require_once __DIR__ . '/../defined_code.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="title" content="SONRISE | A Sanctuary for Poetry, Stories & Literature">
+    <meta name="title" content="SONRISE | A Sanctuary for Poetry, Stories and Literature">
     <meta name="description" content="Explore a world of dark gothic thrillers, nature-inspired poems, and stories of self-discovery. Join our community of writers on SONRISE, a secure platform for creative literature.">
     <meta name="keywords" content="poetry, creative writing, short stories, gothic thrillers, literature platform, self-discovery, SONRISE, Ghana poets">
     <meta name="author" content="Gideon Akomea Peprah">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://son-rize.infinityfree.me">
+    <meta property="og:url" content="<?= xss_protect(BASE_URL); ?>">
     <meta property="og:title" content="SON-RIZE | A Sanctuary for Poetry, Stories & Literature">
     <meta property="og:description" content="A collaborative, open-source sanctuary for writers to publish stories and poems. Experience a modern, responsive design and secure community content.">
-    <meta property="og:image" content="https://son-rize.infinityfree.me/assets/Logos/sonrise.png">
+    <meta property="og:image" content="<?= xss_protect(BASE_URL); ?>/assets/Logos/sonrise.png">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://son-rize.infinityfree.me">
+    <meta property="twitter:url" content="<?= xss_protect(BASE_URL); ?>">
     <meta property="twitter:title" content="SONRISE | A Sanctuary for Poetry, Stories & Literature">
     <meta property="twitter:description" content="Join the SONRISE community. A responsive, secure platform for dark gothic thrillers and poetic writing.">
-    <meta property="twitter:image" content="https://son-rize.infinityfree.meassets/Logos/sonrise.png">
+    <meta property="twitter:image" content="<?= xss_protect(BASE_URL); ?>/assets/Logos/sonrise.png">
     <meta charset="UTF-8">
     <meta name="theme-color" content="#dc3545"> <link rel="canonical" href="https://son-rize.infinityfree.meindex.php">
     

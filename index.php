@@ -12,7 +12,7 @@
             <button class="btn_learn_more" type="button">Learn More</button>
             
             <div class="hero-main-img">
-                <img src="./assets/Images/reading_teenager.jpg" alt="welcome image">
+                <img src="./assets/Images/Reading_Teenager_student.jpg" alt="welcome image">
             </div>
 
             <div class="form_for_Oauth">
@@ -51,7 +51,7 @@
             <div class="card">
                 <h2>Community</h2>
                 <p>Join our community to start publishing your own Writings!</p>
-                <img src="./assets/Images/girl_husband_wih_bookt.jpg" alt="Community">
+                <img src="./assets/Images/share_your_voice.jpg" alt="Community">
             </div>
         </aside>
     </section>

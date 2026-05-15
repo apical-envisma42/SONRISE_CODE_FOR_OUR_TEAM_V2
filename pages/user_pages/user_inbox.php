@@ -1,5 +1,8 @@
-<?php require_once __DIR__ . '/../../components/universal_components/head_home.inc.php';
+<?php ob_start();
+require_once __DIR__ . '/../../components/universal_components/head_home.inc.php';
  require_once __DIR__ . '/../../components/universal_components/nav_home.inc.php'; 
+
+//  check_logged_in(__DIR__ . '/../../API/OAUTH/google_oauth/index.php');
 ?>
 <link rel="stylesheet" href="../../assets/CSS/user_inbox.css">
 <style>
