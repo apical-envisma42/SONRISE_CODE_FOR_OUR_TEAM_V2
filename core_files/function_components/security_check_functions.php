@@ -68,7 +68,7 @@ function check_oauth_state_parameter(): bool {
         $safe_ip = filter_var($user_ip, FILTER_VALIDATE_IP) ? $user_ip : 'INVALID_IP_FORMAT';
         error_log("SECURITY ALERT: OAuth state parameter mismatch or CSRF attempt intercepted. Originating IP: " . $safe_ip);
 
-        header("Location: ../../pages/security_pages/csrf_invalid.php");
+        header("Location: " . BASE_URL . "pages/security_pages/csrf_invalid.php");
         exit();
     }
 

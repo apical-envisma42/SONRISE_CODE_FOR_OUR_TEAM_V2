@@ -15,7 +15,7 @@ function get_dynamic_title() {
 
     $page_name = isset($titles[$current_file]) ? $titles[$current_file] : 'Welcome';
 
-    return "Son-Rize | " . xss_protect($page_name);
+    return "Sonrise | " . xss_protect($page_name);
 }
 
 function get_account_colour($acc_Status) {

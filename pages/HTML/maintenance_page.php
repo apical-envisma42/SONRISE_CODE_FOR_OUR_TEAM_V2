@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../components/universal_components/head_home.inc.php'; 
+check_maintenance_mode($APP_MAINTENANCE_MODE);
 ?>
 
 <main class="maintenance-wrapper">
@@ -21,6 +22,7 @@ require_once __DIR__ . '/../../components/universal_components/head_home.inc.php
         </div>
 
         <div class="maintenance-footer">
+            <a href="./maintenance_page.php?maintenance_status=check_maintenance">CHECK SITE STATUS</a>
             <p>Need urgent assistance? <a href="mailto:support@sonrise.com">Contact Support</a></p>
             <div class="social-links">
                 <a href="#"><i class="fa-brands fa-github"></i></a>

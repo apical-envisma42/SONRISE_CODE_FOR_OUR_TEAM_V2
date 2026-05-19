@@ -1,4 +1,5 @@
 <?php 
+require_once __DIR__ . '/../../core_files/mail_config.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -28,7 +29,7 @@ use PHPMailer\PHPMailer\Exception;
             $mail->Subject = "SONRISE SIGN IN WITH GOOGLE OAUTH 2.0";
             
             ob_start(); 
-            require_once __DIR__ . '/welcome_email.php'; 
+            require_once __DIR__ . '/welcome_email_sonrise.php'; 
             $mail->Body = ob_get_clean(); // NOTE TO SELF: THIS CAPTURES THE TEMPLATE FOR EMAIL
 
             $mail->send();

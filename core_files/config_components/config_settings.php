@@ -1,7 +1,7 @@
 <?php 
 define('BASE_URL', 'http://localhost/sonrise/');
 define('ROOT_PATH_CORE_FILES', '/../');
-$app_dev_mode            = ""; // WILL ADD VALUE LATER
+$app_dev_mode            = "local"; // WILL ADD VALUE LATER
 $APP_MAINTENANCE_MODE    = "";
 
 // ERROR LOG SETTINGS
@@ -21,7 +21,7 @@ endif;
 $current_page = basename($_SERVER['PHP_SELF']);
 
 if($APP_MAINTENANCE_MODE === 'ON' && $current_page !== 'maintenance_page.php') {
-    header("Location: ./pages/HTML/maintenance_page.php");
+    header("Location: " . BASE_URL . "pages/HTML/maintenance_page.php");
     exit();
 }
 

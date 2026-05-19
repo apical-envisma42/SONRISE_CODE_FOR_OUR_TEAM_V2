@@ -197,12 +197,18 @@
 /**
  * Opens the primary Poem Modal
  */
+/**
+ * Global variable to store the analysis of the poem currently being viewed.
+ * This is populated every time openPoem() is called.
+ */
+let currentAnalysisData = [];
+
+
 function openPoem(card) {
     const modal = document.getElementById("poemModal");
     const modalBody = document.getElementById("modalBody");
     const modalImgContainer = document.getElementById("modalImageContainer");
     
-    // 1. Clear previous content and restore Image Logic
     if (modalImgContainer) {
         modalImgContainer.innerHTML = "";
         const cardImg = card.querySelector("img");
@@ -216,21 +222,22 @@ function openPoem(card) {
         }
     }
 
-    // 2. Extract Data
     const title = card.querySelector("h2").textContent;
     const content = card.querySelector(".blog-content p").innerHTML;
     const author = card.querySelector("small").textContent;
-    // FIX: Define the slug variable so the URL logic works
     const poemSlug = card.getAttribute('data-slug'); 
 
-    // 3. Inject Poem
+   
+    const rawAnalysis = card.getAttribute('data-analysis');
+    currentAnalysisData = rawAnalysis ? JSON.parse(rawAnalysis) : [];
+
     modalBody.innerHTML = `
         <h2 class="modal-poem-title">${title}</h2>
         <div class="poem-wrapper">${content}</div>
         <div class="modal-poem-author">${author}</div>
         
-        <div class="analysis-trigger-box" style="margin-top: 30px; text-align: center; color:#dc3545">
-             <a href="#" class="analysis-toggle-link" onclick="openAnalysisModal(event)">
+        <div class="analysis-trigger-box" style="margin-top: 30px; text-align: center;">
+             <a href="#" class="analysis-toggle-link" style="color:#dc3545; font-weight: bold; text-decoration: none;" onclick="openAnalysisModal(event)">
                 <i class="fa-solid fa-magnifying-glass-chart"></i> Open Detailed Analysis
             </a>
         </div>
@@ -239,7 +246,6 @@ function openPoem(card) {
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 
-    // 4. URL Slug Logic (Now fixed because poemSlug is defined above)
     if (poemSlug) {
         const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?poem=' + poemSlug;
         window.history.pushState({path: newUrl}, '', newUrl);
@@ -248,50 +254,30 @@ function openPoem(card) {
     updateStreak();
 }
 
-/**
- * Opens the NEW Secondary Analysis Modal
- */
 function openAnalysisModal(e) {
     e.preventDefault();
     const analysisModal = document.getElementById("analysisModal");
     const analysisContent = document.getElementById("analysisContent");
 
-    analysisContent.innerHTML = `
-        <div class="stanza-block">
-            <h4 style="color: #dc3545;">Stanza 1</h4>
-            <p class="stanza-quote"><em>"I wander around / On the warm summer ground..."</em></p>
-            <p>The opening immediately introduces movement and instability through the verb “wander.” The diction suggests aimlessness and emotional searching. The contrast between the "warm summer ground" and the question “when will I have fun?” reveals inner unhappiness despite outward beauty.</p>
-        </div>
+    analysisContent.innerHTML = "";
 
-        <div class="stanza-block">
-            <h4 style="color: #dc3545;">Stanza 2</h4>
-            <p class="stanza-quote"><em>"I’m always working / And giving glory..."</em></p>
-            <p>The phrase “giving glory” suggests sacrifice or devotion to others while neglecting oneself. The speaker longs for “my own story,” symbolizing a desire for identity and recognition.</p>
-        </div>
-
-        <div class="stanza-block">
-            <h4 style="color: #dc3545;">Stanza 3</h4>
-            <p class="stanza-quote"><em>"I shiver beneath the moon / On a cold winter night..."</em></p>
-            <p>The shift from summer to winter reflects emotional transition. Winter now symbolizes loneliness and suffering, intensifying the melancholy atmosphere.</p>
-        </div>
-
-        <div class="stanza-block">
-            <h4 style="color: #dc3545;">Stanza 4</h4>
-            <p class="stanza-quote"><em>"“What didn’t I do right?”"</em></p>
-            <p>This isolated line visually emphasizes loneliness and self-doubt. The diction is painfully simple, making the emotion feel genuine and universal.</p>
-        </div>
-
-        <div class="stanza-block">
-            <h4 style="color: #dc3545;">Stanza 5</h4>
-            <p class="stanza-quote"><em>"If I do die of this “abandoning”..."</em></p>
-            <p>The word “abandoning” personifies abandonment as something destructive enough to kill. The stanza transforms suffering into spiritual reflection.</p>
-        </div>
-
-        <div class="stanza-block">
-            <h4 style="color: #dc3545;">Final Couplet</h4>
-            <p class="stanza-quote"><em>"And then I’ll talk to the others / Who also had bad mothers."</em></p>
-            <p>Ending with “bad mothers” reveals the root of the speaker’s pain. The poem closes with vulnerability and emotional honesty.</p>
-    `;
+    if (currentAnalysisData.length === 0) {
+        analysisContent.innerHTML = `
+            <div style="text-align:center; padding: 20px; color: #666;">
+                <p>Detailed analysis for this poem is coming soon!</p>
+            </div>`;
+    } else {
+        // Build the analysis blocks dynamically from the currentAnalysisData array
+        currentAnalysisData.forEach(item => {
+            analysisContent.innerHTML += `
+                <div class="stanza-block" style="margin-bottom: 25px;">
+                    <h4 style="color: #dc3545;">${item.stanza_title}</h4>
+                    <p class="stanza-quote"><em>"${item.stanza_quote}"</em></p>
+                    <p>${item.analysis_text}</p>
+                </div>
+            `;
+        });
+    }
 
     analysisModal.style.display = "flex";
 }
@@ -299,6 +285,7 @@ function openAnalysisModal(e) {
 function closeAnalysisModal() {
     document.getElementById("analysisModal").style.display = "none";
 }
+
 
 function updateStreak() {
     const today = new Date().toDateString();
@@ -311,7 +298,9 @@ function updateStreak() {
             const curr = new Date(today);
             const dayDiff = Math.floor((curr - last) / (1000 * 60 * 60 * 24));
             if (dayDiff === 1) count++; else if (dayDiff > 1) count = 1;
-        } else { count = 1; }
+        } else { 
+            count = 1; 
+        }
         localStorage.setItem('sr_streak', count);
         localStorage.setItem('sr_lastDate', today);
     }
@@ -321,16 +310,15 @@ function closeModal() {
     const modal = document.getElementById("poemModal");
     modal.style.display = "none";
     document.body.style.overflow = "auto";
+    
     const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
     window.history.pushState({path: cleanUrl}, '', cleanUrl);
 }
 
-// Global Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector(".close-modal");
     if (closeBtn) closeBtn.onclick = closeModal;
 
-    // UPDATED: Background click to close both modals
     window.onclick = function(event) {
         const poemModal = document.getElementById("poemModal");
         const analysisModal = document.getElementById("analysisModal");

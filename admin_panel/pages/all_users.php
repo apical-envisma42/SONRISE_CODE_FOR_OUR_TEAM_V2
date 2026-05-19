@@ -6,10 +6,12 @@ require_once __DIR__ . '/../components/defined_code_admin.php';
 
 if(!is_admin()) {
     header("Location: ../pages/user_pages/profile.php");
+    exit();
 }
 
 if(!check_logged_in()) {
     header("Location: ../pages/user_pages/profile.php");
+    exit();
 }
 
 global $dbconn;
@@ -99,11 +101,14 @@ $total_users = mysqli_fetch_assoc($total_users_query)['total'];
         <td><span class="badge <?= xss_protect($badgeClass); ?>"><?= xss_protect($acc_Status); ?></span></td>
         <td><span class="badge active"><?= xss_protect($row['acc_user_level']); ?></span></td>
         <td>
-            <img src="<?= xss_protect($row['user_picture']); ?>" alt="User" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color);">
+            <img src="<?= xss_protect($row['user_picture'] ?? '../../assets/Images/defaultavatar.svg'); ?>" alt="User" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color);">
         </td>
         <td class="action-cell">
+            <form action="../admin_logic/USER_MANAGEMENT_LOGIC/manage_users.php" method="post">
+            <input type="hidden" name="user_id" value="<?= xss_protect($row['id']); ?>">
             <button class="btn-edit" title="Edit"><i class='bx bxs-edit'></i></button>
-            <button class="btn-delete" title="Delete"><i class='bx bxs-trash'></i></button>
+            <button class="btn-delete" name="delete_user" title="Delete"><i class='bx bxs-trash'></i></button>
+            </form>
         </td>
     </tr>
     <?php endwhile; ?>

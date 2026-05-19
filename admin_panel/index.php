@@ -6,10 +6,12 @@ require_once __DIR__ . '/components/defined_code_admin.php';
 
 if(!is_admin()) {
     header("Location: ../pages/user_pages/profile.php");
+    exit();
 }
 
 if(!check_logged_in()) {
     header("Location: ../pages/user_pages/profile.php");
+    exit();
 }
 global $dbconn;
 
@@ -62,23 +64,23 @@ $total_poems = mysqli_fetch_assoc($total_poems_query)['total'];
             <div class="stat-card">
                 <i class='bx bxs-book-heart'></i>
                 <div>
-                    <h3>48</h3>
+                    <h3><?= number_format($total_poems); ?></h3>
                     <p>Published Poems</p>
                 </div>
             </div>
-            <div class="stat-card">
+            <!-- <div class="stat-card">
                 <i class='bx bxs-show'></i>
                 <div>
                     <h3>1.2k</h3>
                     <p>Monthly Views</p>
-                </div>
+                </div> -->
             </div>
         </div>
 
         <div class="table-container">
             <div class="table-header">
                 <h2>Last 5 Recent Joiners</h2>
-                <a href="all_users.php" style="color: var(--crimson-red); text-decoration: none; font-size: 0.9rem; font-weight: 600;">View All</a>
+                <a href="./pages/all_users.php" style="color: var(--crimson-red); text-decoration: none; font-size: 0.9rem; font-weight: 600;">View All</a>
             </div>
             <table>
                 <thead>

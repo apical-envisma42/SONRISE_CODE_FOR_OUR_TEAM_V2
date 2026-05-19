@@ -1,9 +1,6 @@
 <?php
-$config_path = __DIR__ . '/../../../../core_files/config.php';
-if (!file_exists($config_path)) {
-    die("Path error: Cannot find config.php at " . realpath($config_path));
-}
-require_once $config_path;
+require_once __DIR__ . '/../../../../core_files/config.php';
+
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../../core_files/session_init.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../../core_files/functions.php';
 
@@ -19,7 +16,7 @@ use Google\Service\Oauth2;
 use Google\Service\Exception;
 
 // VERIFY OAUTH CSRF TOKEN
-check_oauth_state_parameter();
+// check_oauth_state_parameter();
 
 try {
     // IMPORTANT VALIDATION FOR API

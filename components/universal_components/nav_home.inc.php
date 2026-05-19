@@ -1,24 +1,20 @@
 <?php
-// Ensure session_start() has been called in your header or session_init.php
 $current_page = basename($_SERVER['SCRIPT_NAME']); 
 $login_link_class = "";
 $profile_img_class = "";
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    // User is logged in: Hide Login, Show Profile
     $login_link_class = "hidden_login";
     $profile_img_class = ""; 
 } else {
-    // User is a guest: Show Login, Hide Profile
     $login_link_class = "";
     $profile_img_class = "hidden_img";
 }
-?>
+?><style></style>
 <header class="header">
     <nav class="nav_container">
 
         <div class="logo">
-             <!-- DURING PROD MAKE 'HTTP' to 'HTTPS' -->
             <img src="http://<?= xss_protect($_SERVER['HTTP_HOST']) ?>/sonrise/assets/Logos/sonrise.png" alt="logo">
         </div>
 
@@ -32,6 +28,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     </li>
     <li>
         <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php" class="<?= ($current_page == 'poems.php') ? 'active' : '' ?>">Our Literature</a>
+    </li>
+    <li>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/podcasts.php" class="<?= ($current_page == 'podcasts.php') ? 'active' : '' ?>">Our Podcasts</a>
     </li>
     <li>
         <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/about.php" class="<?= ($current_page == 'about.php') ? 'active' : '' ?>">About Us</a>

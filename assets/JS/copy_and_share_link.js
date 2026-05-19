@@ -52,13 +52,13 @@ function copyPoemLink(slug, btn) {
 
 // 2. WhatsApp
 function shareWhatsApp(slug, title) {
-    const text = encodeURIComponent(`"${title}" - Read this beautiful poem at Son-rize: ` + getShareUrl(slug));
+    const text = encodeURIComponent(`"${title}" - Read this beautiful poem at Sonrise: ` + getShareUrl(slug));
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
 }
 
 // 3. Twitter (X)
 function shareTwitter(slug, title) {
-    const text = encodeURIComponent(`Check out this poem on Son-rize: "${title}"`);
+    const text = encodeURIComponent(`Check out this poem on Sonrise: "${title}"`);
     const url = encodeURIComponent(getShareUrl(slug));
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
 }
@@ -66,7 +66,7 @@ function shareTwitter(slug, title) {
 // 4. Gmail
 function shareGmail(slug, title) {
     const subject = encodeURIComponent(`Poem Recommendation: ${title}`);
-    const body = encodeURIComponent(`I found this poem on Son-rize and thought you'd like it:\n\n${getShareUrl(slug)}`);
+    const body = encodeURIComponent(`I found this poem on Sonrise and thought you'd like it:\n\n${getShareUrl(slug)}`);
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
 }
 

@@ -1,0 +1,22 @@
+# ----------------------------------------------------------------------
+# SONRISE Security Layer: OAuth Gateway Access Control
+# ----------------------------------------------------------------------
+
+# 1. Disable Directory Browsing completely
+# Stops users from seeing your folder trees if they delete "index.php" from the URL.
+Options -Indexes
+
+# 2. Block direct web snoopers from sensitive subdirectories
+# Redirects or drops requests trying to look into storage or logic folders.
+RedirectMatch 403 ^/sonrise/API/OAUTH/google_oauth/(JSON_FILES|LOGS|oauth_logic)(/|$)
+
+# 3. Explicitly allow public access to the main authentication endpoints
+<FilesMatch "^(index\.php|oauth_logic/google_redirect\.php)$">
+    Require all granted
+</FilesMatch>
+
+# 4. Protect background processing scripts from manual browser execution
+<FilesMatch "\.(json|log|ini|txt)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>

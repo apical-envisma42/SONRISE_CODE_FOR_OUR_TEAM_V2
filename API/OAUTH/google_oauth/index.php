@@ -10,11 +10,16 @@ if(check_logged_in()) {
 
 $google_client = new Google\Client;
 
-$oauth_state = generate_oauth_state();
+// $oauth_state = ""; 
 
-$_SESSION['oauth_state'] = $oauth_state;
+// if(!isset($_SESSION['oauth_state'])) {
+//     $oauth_state = bin2hex(random_bytes(35));
+//     $_SESSION['oauth_state'] = $oauth_state;
+// } else {
+//     $oauth_state = $_SESSION['oauth_state'];
+// }
 
-$google_client->setState($oauth_state);
+// $google_client->setState($oauth_state);
 
 
 $google_client->setClientId($google_client_ID);
@@ -32,13 +37,13 @@ $google_url = $google_client->createAuthUrl();
     <div class="login-container">
         <div class="login-card">
 <a href="<?= xss_protect(BASE_URL); ?>./index.php" class="back-link">
-    <i class="fa-solid fa-arrow-left"></i> Back to Home
+    <i class="fa-solid fa-arrow-left"></i> Back To Home
 </a>
             
             <h2>Welcome Back</h2>
             <p>Login to continue your creative journey.</p>
 
-            <form action="login.php" class="auth-form">
+            <form action="" class="auth-form">
                 <div class="social-auth">
                     <a href="<?= xss_protect($google_url); ?>" type="submit" class="social-btn google">
                         <i class="fa-brands fa-google"></i> Continue with Google

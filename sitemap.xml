@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
-    <loc>https://son-rize.com/index.php</loc>
-    <lastmod>2026-05-09</lastmod>
+    <loc>https://sonrise.infinityfree.me/index.php</loc>
+    <lastmod>2026-05-17</lastmod>
     <priority>1.00</priority>
+    <changefreq>daily</changefreq>
   </url>
 
   <url>
-    <loc>https://son-rize.com/pages/HTML/poems.php</loc>
-    <lastmod>2026-05-09</lastmod>
-    <priority>0.80</priority>
+    <loc>https://sonrise.infinityfree.me/API/OAUTH/google_oauth/index.php</loc>
+    <lastmod>2026-05-17</lastmod>
+    <priority>0.90</priority>
+    <changefreq>weekly</changefreq>
   </url>
+
+  <url>
+    <loc>https://sonrise.infinityfree.me/pages/HTML/poems.php</loc>
+    <lastmod>2026-05-17</lastmod>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://sonrise.infinityfree.me/pages/HTML/podcasts.php</loc>
+    <lastmod>2026-05-17</lastmod>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://sonrise.infinityfree.me/pages/HTML/credits.php</loc>
+    <lastmod>2026-05-17</lastmod>
+    <priority>0.50</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
 </urlset>

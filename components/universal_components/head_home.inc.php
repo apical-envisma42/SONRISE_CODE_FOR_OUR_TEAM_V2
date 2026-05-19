@@ -36,6 +36,6 @@ require_once __DIR__ . '/../defined_code.php';
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/maintenance_page.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/credits.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/oauth_profile.css">
-    <link rel="shortcut icon" href="http://<?= xss_protect($_SERVER['HTTP_HOST']) ?>/sonrise/assets/Logos/sonrise.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/Logos/sonrise.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>

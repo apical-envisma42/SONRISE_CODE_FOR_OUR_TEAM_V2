@@ -1,6 +1,11 @@
 <?php require_once __DIR__ . '/components/universal_components/head_home.inc.php';
       require_once __DIR__ . '/components/universal_components/nav_home.inc.php';
 ?>
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
 <main>
     <section class="hero">
         <div class="hero-left">
@@ -36,17 +41,23 @@
         </div>
 
         <aside class="hero-right">
+            <a href="./pages/HTML/poems.php">
             <div class="card">
-                <h2>Poetic Writing</h2>
-                <p>Read soul capturing poems that will take you on a journey of emotions and self-discovery.</p>
+                <h2 style="color: black;">Poetic Writing</h2>
+                <p style="color: black;">Read soul capturing poems that will take you on a journey of emotions and self-discovery. <br> 
+                <span style="color: #dc3545;"><strong>Click to explore!</strong></span></p>
                 <img src="./assets/Images/background_images.jpg" alt="Poetry">
             </div>
+            </a>
 
+            <a href="./pages/HTML/podcasts.php">
             <div class="card">
-                <h2>Stories</h2>
-                <p>Immerse yourself in captivating stories that will transport you to different worlds.</p>
+                <h2 style="color: black;">Our Podcast</h2>
+                <p style="color: black;">Immerse yourself in our library of captivating podcast overviews on your favourite books that will transport you to different worlds. <br>
+                <span style="color: #dc3545;"><strong>Click to explore!</strong></span></p>
                 <img src="./assets/Images/student_doing_assignment.jpg" alt="Stories">
             </div>
+            </a>
 
             <div class="card">
                 <h2>Community</h2>
