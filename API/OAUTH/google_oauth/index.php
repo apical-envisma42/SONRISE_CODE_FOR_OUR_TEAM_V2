@@ -10,17 +10,7 @@ if(check_logged_in()) {
 
 $google_client = new Google\Client;
 
-// $oauth_state = ""; 
-
-// if(!isset($_SESSION['oauth_state'])) {
-//     $oauth_state = bin2hex(random_bytes(35));
-//     $_SESSION['oauth_state'] = $oauth_state;
-// } else {
-//     $oauth_state = $_SESSION['oauth_state'];
-// }
-
-// $google_client->setState($oauth_state);
-
+generate_oauth_state_token($google_client, 45);
 
 $google_client->setClientId($google_client_ID);
 $google_client->setClientSecret($google_client_secret);

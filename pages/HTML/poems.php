@@ -270,7 +270,6 @@ error_reporting(E_ALL);
     transform: scale(0.98); 
 }
 
-/* Entry Animation */
 @keyframes srPopIn {
     from {
         opacity: 0;
@@ -284,11 +283,9 @@ error_reporting(E_ALL);
 </style>
 
 <?php
-// Check if the get parameter 'check_maintenance' is set and equals 'active_maintenance'
 $show_maintenance_modal = isset($_GET['check_maintenance']) && $_GET['check_maintenance'] === 'active_maintenance';
 ?>
 
-<!-- Only render the modal markup if the GET condition is met -->
 <?php if ($show_maintenance_modal): ?>
 <div id="srMaintenanceOverlay" class="sr-maintenance-backdrop">
     <div class="sr-maintenance-card">
@@ -340,18 +337,27 @@ while ($row = mysqli_fetch_assoc($result)):
         mysqli_stmt_execute($stmt); 
         $ana_result = mysqli_stmt_get_result($stmt);
         
-        if ($ana_result) {
+            if ($ana_result) {
             while($a_row = mysqli_fetch_assoc($ana_result)) {
-                $analysis_data[] = $a_row;
+                $analysis_data[] = [
+                    'stanza_title' => xss_protect($a_row['stanza_title']),
+                    'stanza_quote' => xss_protect($a_row['stanza_quote']),
+                    'analysis_text' => xss_protect($a_row['analysis_text'])
+                ];
             }
         }
-        $analysis_json = htmlspecialchars(json_encode($analysis_data), ENT_QUOTES, 'UTF-8');
+        
+        
+        $json_raw_string = json_encode($analysis_data, JSON_UNESCAPED_UNICODE);
+        if ($json_raw_string === false) {
+            $json_raw_string = json_encode([]);
+        }
 ?>
 
     <div class="blog-card poem-card" 
          data-genre="<?= xss_protect($row['poem_genre']); ?>" 
          data-slug="<?= xss_protect($row['poem_slug']); ?>" 
-         data-analysis='<?= $analysis_json; ?>' 
+         data-analysis="<?= htmlspecialchars($json_raw_string, ENT_QUOTES, 'UTF-8'); ?>" 
          onclick="openPoem(this)">
 
 

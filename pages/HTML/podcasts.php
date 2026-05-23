@@ -96,7 +96,8 @@
                     </h3>
                     <p class="text-gray-400 text-sm sm:text-base leading-relaxed line-clamp-2 max-w-3xl mb-6">
                         <?= xss_protect($row['summary']); ?>
-                    </p> </div>
+                    </p>
+                </div>
 
 <div class="flex flex-col sm:flex-row sm:items-center gap-4 justify-between w-full max-w-2xl border-t border-gray-900 pt-4">
                     
@@ -245,7 +246,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
 <script src="../../assets/JS/play_podcast_audio.js?v=2.0.0"></script>
-<!-- <script src="../../assets/JS/podcast_progress_bar.js"></script> -->
+<script src="../../assets/JS/podcast_progress_bar.js"></script>
 <script src="../../assets/JS/podcast_share_url.js"></script>
 </body>
 </html>

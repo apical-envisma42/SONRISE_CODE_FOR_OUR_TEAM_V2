@@ -6,7 +6,7 @@ $APP_MAINTENANCE_MODE    = "";
 
 // ERROR LOG SETTINGS
 ini_set('log_errors', 'On');
-ini_set('error_log', __DIR__ . '/../index_logs/index_logs.log');
+ini_set('error_log', __DIR__ . '/../../index_logs/index_logs.log');
 
 if($app_dev_mode === 'local'):
     ini_set('display_errors', '1');

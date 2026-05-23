@@ -1,7 +1,13 @@
 <?php require_once __DIR__ . '/../../../core_files/config.php';
+require_once __DIR__ . '/../../../core_files/functions.php';
 global $dbconn;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if($_POST['user_acc_level'] !== "admin") {
+        header("Location: ../../../pages/user_pages/profile.php?user_deny_admin_status=denied_from_admin");
+    }
+
+    form_validate_post_csrf($_POST['csrf_token']);
     if(isset($_POST['delete_user'])) {
         $user_id = $_POST['user_id'];
         $sql = "DELETE FROM oauth_users WHERE id = ?";

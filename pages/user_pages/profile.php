@@ -1,5 +1,5 @@
-<?php require_once __DIR__ . '/../../components/universal_components/head_home.inc.php'; 
-$location_header = __DIR__ . '/../../index.php';
+<?php 
+require_once __DIR__ . '/../../components/universal_components/head_home.inc.php'; 
 $hidden_class = "";
 $member_since = "Unknown";
 
@@ -77,7 +77,6 @@ if($_SESSION['oauth_provider'] === 'google') {
             </div>
         </div>
 
-        <!-- Stacked Action Buttons -->
 
 <div class="profile-actions-grid">
     

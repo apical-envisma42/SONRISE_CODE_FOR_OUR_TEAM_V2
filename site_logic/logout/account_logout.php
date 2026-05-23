@@ -7,6 +7,8 @@ if (!form_validate_post_csrf($_POST['csrf_token'] ?? null)) {
         exit(); 
     }
 
+    // unset($_SESSION);
+
     $_SESSION = [];
     
     if (ini_get("session.use_cookies")) {

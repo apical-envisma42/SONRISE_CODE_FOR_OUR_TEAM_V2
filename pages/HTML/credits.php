@@ -13,7 +13,7 @@
             <ul>
                 <li>
                     <span class="label-text">Backend:</span>
-                    <span class="value-text">PHP 8.x (LAMP Stack)</span>
+                    <span class="value-text">PHP 8.2 (LAMP Stack)</span>
                 </li>
                 <li>
                     <span class="label-text">Frontend:</span>
@@ -21,7 +21,11 @@
                 </li>
                 <li>
                     <span class="label-text">API:</span>
-                    <span class="value-text">Google OAuth 2.0 library, vlucas/phpdotenv, phpmailer</span>
+                    <span class="value-text">Google OAuth 2.0 library, phpmailer</span>
+                </li>
+                <li>
+                    <span class="label-text">CDN:</span>
+                    <span class="value-text">CDNJS Cloudflare & </span>
                 </li>
             </ul>
         </div>

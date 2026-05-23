@@ -26,12 +26,19 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     <li>
         <a href="../../index.php" class="<?= ($current_page == 'index.php') ? 'active' : '' ?>">Home</a>
     </li>
+
     <li>
         <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php" class="<?= ($current_page == 'poems.php') ? 'active' : '' ?>">Our Literature</a>
     </li>
+
     <li>
         <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/podcasts.php" class="<?= ($current_page == 'podcasts.php') ? 'active' : '' ?>">Our Podcasts</a>
     </li>
+
+    <li>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/gallery.php" class="<?= ($current_page == 'gallery.php') ? 'active' : '' ?>">The Gallery</a>
+    </li>
+
     <li>
         <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/about.php" class="<?= ($current_page == 'about.php') ? 'active' : '' ?>">About Us</a>
     </li>
