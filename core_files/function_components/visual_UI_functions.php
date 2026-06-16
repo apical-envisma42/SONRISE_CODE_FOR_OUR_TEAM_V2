@@ -6,11 +6,13 @@ function get_dynamic_title() {
     $current_file = basename($_SERVER['SCRIPT_NAME']); 
 
     $titles = [
-        'index.php'  => 'A Sanctuary for Poetry, Stories & Literature',
-        'poems.php'  => 'Our Literature',
-        'about.php'  => 'About Us',
-        'login.php'  => 'Login',
-        'login.html' => 'Login'
+        'index.php'    => 'A Sanctuary for Poetry, Stories and Literature.',
+        'poems.php'    => 'Our Literature',
+        'about.php'    => 'About Us',
+        'login.php'    => 'Login',
+        'login.html'   => 'Login',
+        'credits.php'  => 'Credits',
+        'podcasts.php' => 'Podcasts'
     ];
 
     $page_name = isset($titles[$current_file]) ? $titles[$current_file] : 'Welcome';
@@ -22,8 +24,10 @@ function get_account_colour($acc_Status) {
     $status = strtolower($acc_Status);
     if($status == 'active') {
         return "active";
-    } elseif($status == 'inactive' || $status == 'banned') {
+    } elseif($status == 'inactive') {
         return "inactive";
+    } elseif($status == 'banned') {
+        return "Banned";
     } elseif($status == 'pending') {
         return "pending";
     }

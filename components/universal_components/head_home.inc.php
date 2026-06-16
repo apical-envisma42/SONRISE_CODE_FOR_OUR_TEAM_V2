@@ -1,7 +1,5 @@
 <?php if(ob_get_level() === 0) ob_start(); 
-require_once __DIR__ . '/../../core_files/config.php'; 
-require_once __DIR__ . '/../../core_files/session_init.php';
-require_once __DIR__ . '/../../core_files/functions.php';
+require_once __DIR__ . '/../../core_files/init_core_files.php';
 require_once __DIR__ . '/../defined_code.php';
 ?>
 <head>
@@ -24,7 +22,7 @@ require_once __DIR__ . '/../defined_code.php';
     <meta property="twitter:description" content="Join the SONRISE community. A responsive, secure platform for dark gothic thrillers and poetic writing.">
     <meta property="twitter:image" content="<?= xss_protect(BASE_URL); ?>/assets/Logos/sonrise.png">
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#dc3545"> <link rel="canonical" href="https://son-rize.infinityfree.meindex.php">
+    <meta name="theme-color" content="#dc3545">
     
     <!-- DYNAMIC TITLE -->
     <title><?= xss_protect(get_dynamic_title()); ?></title>
@@ -36,6 +34,6 @@ require_once __DIR__ . '/../defined_code.php';
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/maintenance_page.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/credits.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL); ?>./assets/CSS/oauth_profile.css">
-    <link rel="shortcut icon" href="../../assets/Logos/sonrise.png" type="image/x-icon">
+    <link rel="shortcut icon" href="http://<?= xss_protect($_SERVER['HTTP_HOST']) ?>/sonrise/assets/Logos/sonrise.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>

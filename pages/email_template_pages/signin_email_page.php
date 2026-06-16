@@ -1,13 +1,4 @@
 <?php
-/**
- * SONRISE HTML Welcome Email Template (Secured with XSS Protection)
- * * Context variables passed into sendWelcomeEmail():
- * @var string $recepient_name
- * @var string $api_provider
- * @var string $ip_address
- */
-
-// Fallback assignments to prevent undefined variable notices if tested manually
 $display_name = isset($recepient_name) ? $recepient_name : 'Reader';
 $provider_name = isset($api_provider) ? ucfirst($api_provider) : 'Google';
 $node_ip = isset($ip_address) ? $ip_address : '127.0.0.1';

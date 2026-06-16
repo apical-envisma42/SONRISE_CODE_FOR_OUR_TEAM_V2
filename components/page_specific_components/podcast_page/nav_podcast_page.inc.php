@@ -40,6 +40,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             <li>
                 <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/podcasts.php" class="block py-2 transition-colors duration-200 <?= ($current_page == 'podcasts.php') ? 'text-[#dc3545] font-semibold' : 'text-gray-400 hover:text-gray-200' ?>">Our Podcasts</a>
             </li>
+        <li>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/gallery.php" class="<?= ($current_page == 'gallery.php') ? 'active' : '' ?>">The Gallery</a>
+        </li>
             <li>
                 <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/about.php" class="block py-2 transition-colors duration-200 <?= ($current_page == 'about.php') ? 'text-[#dc3545] font-semibold' : 'text-gray-400 hover:text-gray-200' ?>">About Us</a>
             </li>

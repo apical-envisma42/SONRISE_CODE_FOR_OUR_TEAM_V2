@@ -1,8 +1,9 @@
 <?php 
 define('BASE_URL', 'http://localhost/sonrise/');
 define('ROOT_PATH_CORE_FILES', '/../');
-$app_dev_mode            = "local"; // WILL ADD VALUE LATER
+$app_dev_mode            = "local"; // CHANGE VALUE DURING 'prod'
 $APP_MAINTENANCE_MODE    = "";
+date_default_timezone_set('UTC');
 
 // ERROR LOG SETTINGS
 ini_set('log_errors', 'On');
@@ -21,7 +22,7 @@ endif;
 $current_page = basename($_SERVER['PHP_SELF']);
 
 if($APP_MAINTENANCE_MODE === 'ON' && $current_page !== 'maintenance_page.php') {
-    header("Location: " . BASE_URL . "pages/HTML/maintenance_page.php");
+    header("Location: " . BASE_URL . "/pages/HTML/maintenance_page.php");
     exit();
 }
 

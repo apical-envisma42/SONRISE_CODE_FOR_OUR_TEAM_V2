@@ -1,8 +1,5 @@
-<?php require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../components/universal_components/head_home.inc.php' ?>
-<?php 
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/config.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/session_init.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../core_files/functions.php';
+<?php require_once __DIR__ . '/../../../components/universal_components/head_home.inc.php';
+
 
 if(check_logged_in()) {
     header("Location: ../../../pages/user_pages/profile.php");
@@ -10,7 +7,6 @@ if(check_logged_in()) {
 
 $google_client = new Google\Client;
 
-generate_oauth_state_token($google_client, 45);
 
 $google_client->setClientId($google_client_ID);
 $google_client->setClientSecret($google_client_secret);
@@ -22,6 +18,9 @@ $google_client->addScope("profile");
 
 $google_url = $google_client->createAuthUrl();
 ?>
+<head>
+    <link rel="canonical" href="https://sonrise.infinityfree.me/API/OAUTH/google_oauth/index.php" >
+</head>
 <body class="login-page-bg">
 
     <div class="login-container">

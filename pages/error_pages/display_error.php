@@ -1,47 +1,73 @@
 <?php 
-require_once __DIR__ . '../';
-require_once __DIR__ . DIRECTORY_SEPARATOR .'../../../../core_files/session_init.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR .'../../../../core_files/functions.php'; 
+require_once __DIR__ . '/../../core_files/session_init.php';
+include_once __DIR__ . '/../../core_files/config.php';
+include_once __DIR__ . '/../../core_files/functions.php'; 
+
+// Procedural extraction and sanitization of session errors
+$error_title = isset($_SESSION['error_title']) 
+    ? xss_protect($_SESSION['error_title']) 
+    : 'Lost in the Verses';
+
+$error_msg = isset($_SESSION['error_msg']) 
+    ? xss_protect($_SESSION['error_msg']) 
+    : 'The parchment you are looking for has been burned to ash. This path leads nowhere.';
+
+// Clear the session variables after assigning them so they don't persist on reload
+unset($_SESSION['error_title']);
+unset($_SESSION['error_msg']);
+
+$redirect_seconds = 15;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERROR OCCURED | SONRISE</title>
+    <title>Lost in Verses | SONRISE</title>
     <link rel="stylesheet" href="../../assets/CSS/display_error.css">
 </head>
 <body>
-    
-
 
 <div class="error-wrapper">
     <div class="glass-card error-card">
-<div class="icon-box">
-    <img src="../images/fixmyareaghana-high-resolution-logo.png" 
-         alt="Fix My Area Ghana" 
-         style="max-width: 100%; max-height: 100%; border-radius: 50%; object-fit: contain;">
-</div>
+        <div class="icon-box">
+            <img src="../../assets/Logos/sonrise.png" alt="SONRISE">
+        </div>
         
-        <h1 style="color: #004b23;"><?php echo xss_protect($_SESSION['error_title'] ?? 'System Notice'); ?></h1>
-        <p style="color: #004b23;"><?php echo xss_protect($_SESSION['error_msg'] ?? 'An unexpected event has occurred. Please try again later.'); ?></p>
+        <h1><?= xss_protect($error_title)?></h1>
+        <p><?= xss_protect($error_msg); ?></p>
         
         <div class="action-bar">
             <a href="javascript:history.back()" class="btn-action btn-secondary-err">
-                <i class="icofont-arrow-left mr-2"></i> <span style="color: #004b23">Go Back</span>
+                <span>Retrace Steps</span>
             </a>
-            <a href="../index.php" style="background-color: #004b23;" class="btn-action btn-primary-err">
+            <a href="../../index.php" class="btn-action btn-primary-err">
                 Return Home
             </a>
         </div>
 
         <div class="auto-redirect">
-            Redirecting to home in <span id="countdown">15</span> seconds...
+            Awakening back to reality in <span id="countdown"><?= $redirect_seconds; ?></span> seconds...
         </div>
     </div>
 </div>
+<!-- 
+<script>
+    let timeLeft = <?= $redirect_seconds; ?>;
+    const countdownElement = document.getElementById('countdown');
+    const redirectUrl = "../../index.php";
 
-<script src="../assets/JS/error_countdown_redirect.js"></script>
+    const timer = setInterval(function() {
+        timeLeft--;
+        countdownElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            window.location.href = redirectUrl;
+        }
+    }, 1000);
+</script> -->
 
 </body>
 </html>

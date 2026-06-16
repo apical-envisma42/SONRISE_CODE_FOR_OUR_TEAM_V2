@@ -20,6 +20,63 @@
             </div>
             
             <div class="founder-text">
+                <span class="label" style="font-size: 18px;">MEET THE DEVELOPERS</span>
+                <h2>Behind the Verses</h2>
+                <p>
+                    SonRise was born out of a passion for storytelling and the belief that every 
+                    writer deserves a stage. Our mission is to preserve the beauty of Ghanaian 
+                    poetry while providing a modern foundation for new voices to rise.
+                </p>
+                <p>
+                    From humble beginnings as a shared project between friends, this platform 
+                    now serves as a sanctuary for those who find solace in the written word.
+                </p>
+                <div class="signature">
+                    <p><strong>Jaden William Bubune Agbaga</strong></p>
+                    <small><span style="color: #dc3545; font-size: 16px; font-weight:bold;">BACKEND DEVELOPER</span> Of <span style="color: #dc3545; font-size: 16px"><strong>SONRISE</strong></span></small>
+                </div>
+            </div>
+        </div>
+    </section>
+       <section class="founder-section">
+        <div class="founder-container">
+            <div class="founder-image">
+                <!-- PHOTO SPACE: Replace the src with your actual image path -->
+                <div class="photo-frame">
+                    <img src="../../assets/Images/Mr_Preprah.jpg" alt="Founder of Son-Rise">
+                </div>
+            </div>
+            
+            <div class="founder-text">
+                <span class="label">The Visionary</span>
+                <h2>Behind the Verses</h2>
+                <p>
+                    Son-Rise was born out of a passion for storytelling and the belief that every 
+                    writer deserves a stage. Our mission is to preserve the beauty of Ghanaian 
+                    poetry while providing a modern foundation for new voices to rise.
+                </p>
+                <p>
+                    From humble beginnings as a shared project between friends, this platform 
+                    now serves as a sanctuary for those who find solace in the written word.
+                </p>
+                <div class="signature">
+                    <p><strong>Jeremiah Ayoka Osei</strong></p>
+                    <small><span style="color: #dc3545; font-size: 16px; font-weight:bold;">UI/UX DEVELOPER</span> Of <span style="color: #dc3545; font-size: 16px"><strong>SONRISE</strong></span></small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <section class="founder-section">
+        <div class="founder-container">
+            <div class="founder-image">
+                <!-- PHOTO SPACE: Replace the src with your actual image path -->
+                <div class="photo-frame">
+                    <img src="../../assets/Images/Mr_Preprah.jpg" alt="Founder of Son-Rise">
+                </div>
+            </div>
+            
+            <div class="founder-text">
                 <span class="label">The Visionary</span>
                 <h2>Behind the Verses</h2>
                 <p>

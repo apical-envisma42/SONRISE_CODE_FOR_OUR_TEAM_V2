@@ -1,7 +1,3 @@
-/**
- * SONRISE Media Player Core Control Logic
- * Unified System: Handles playback, progress bars, and icon centering adjustments
- */
 document.addEventListener("DOMContentLoaded", () => {
     const playButtons = document.querySelectorAll(".podcast-btn");
     const progressBars = document.querySelectorAll(".podcast-progress-bar");
@@ -29,12 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Stop all other audio elements currently playing on the page
             document.querySelectorAll("audio").forEach(otherAudio => {
                 if (otherAudio !== audioNode && !otherAudio.paused) {
                     otherAudio.pause();
                     
-                    // Reset foreign active buttons back to default play states
                     const correspondingBtn = document.querySelector(`[data-episode="${otherAudio.id}"]`);
                     if (correspondingBtn) {
                         const btnIcon = correspondingBtn.querySelector(".btn-icon");
@@ -42,20 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
                             btnIcon.classList.remove("fa-pause");
                             btnIcon.classList.add("fa-play");
                             if (btnIcon.classList.contains('text-lg')) {
-                                btnIcon.classList.add('ml-0.5'); // Re-apply visual play offset triangle centering
+                                btnIcon.classList.add('ml-0.5'); 
                             }
                         }
                     }
                 }
             });
 
-            // Toggle Audio Control State Matrix
             if (!audioNode.paused) {
                 audioNode.pause();
                 iconNode.classList.remove("fa-pause");
                 iconNode.classList.add("fa-play");
                 if (iconNode.classList.contains('text-lg')) {
-                    iconNode.classList.add('ml-0.5'); // Apply centering alignment
+                    iconNode.classList.add('ml-0.5');
                 }
             } else {
                 audioNode.play().catch(err => {
@@ -63,10 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 iconNode.classList.remove("fa-play");
                 iconNode.classList.add("fa-pause");
-                iconNode.classList.remove('ml-0.5'); // Remove padding adjustments so pause bars aren't lopsided
+                iconNode.classList.remove('ml-0.5');
             }
 
-            // 2. Continuous Playback Tracking Loop Handler (Attach once per element life-cycle)
             if (!audioNode.dataset.hasTrackingAttached && controlCard) {
                 const sliderInput = controlCard.querySelector(".podcast-progress-bar");
                 const timeTrackerText = controlCard.querySelector(".current-time-display");
@@ -78,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         
                         if (sliderInput) {
                             sliderInput.value = progressPct;
-                            // Dynamically push a crimson track background fill up behind your slider knob thumb
                             sliderInput.style.background = `linear-gradient(to right, #dc3545 0%, #dc3545 ${progressPct}%, #1f2937 ${progressPct}%, #1f2937 100%)`;
                         }
 
@@ -88,14 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // Populate dynamic length values as soon as browser processes file stream buffers
                 audioNode.addEventListener("loadedmetadata", () => {
                     if (durationTrackerText) {
                         durationTrackerText.textContent = formatTimeDisplay(audioNode.duration);
                     }
                 });
 
-                // Automated System Reset when track runs to completion
                 audioNode.addEventListener("ended", () => {
                     iconNode.classList.remove("fa-pause");
                     iconNode.classList.add("fa-play");
@@ -116,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 3. Scrubbing Mechanics: Allow Users to Drag and Click the Bar to Jump Time Positions
     progressBars.forEach(bar => {
         const targetAudioId = bar.getAttribute("data-target");
         const targetAudio = document.getElementById(targetAudioId);

@@ -10,7 +10,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     $login_link_class = "";
     $profile_img_class = "hidden_img";
 }
-?><style></style>
+?>
 <header class="header">
     <nav class="nav_container">
 
@@ -48,7 +48,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     </li>
 
 <li class="<?= xss_protect($login_link_class); ?>">
-        <a href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/index.php">Login</a>  
+        <a href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/index.php" style="font-weight: bold; color: #dc3545;">Login</a>  
     </li>
 
     <li class="<?= xss_protect($profile_img_class); ?>">
@@ -65,6 +65,5 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         <button class="btn_primary desktop-only">
             <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php" style="color: #000000">READ WITH US</a>
         </button>
-
     </nav>
 </header>

@@ -1,4 +1,7 @@
 <?php require_once __DIR__ . '/../../components/universal_components/head_home.inc.php'; global $dbconn; ?>
+<head>
+    <link rel="canonical" href="https://sonrise.infinityfree.me/pages/HTML/podcasts.php" />
+</head>
 <?php require_once __DIR__ . '/../../components/page_specific_components/podcast_page/nav_podcast_page.inc.php';?>
     <style>
         .brand-crimson { color: #dc3545; }

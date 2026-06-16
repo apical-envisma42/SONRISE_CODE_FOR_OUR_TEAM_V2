@@ -1,6 +1,9 @@
 <?php  require_once __DIR__ . '/../../components/universal_components/head_home.inc.php';
        require_once __DIR__ . '/../../components/universal_components/nav_home.inc.php';
 ?>
+<head>
+    <link rel="canonical" href="https://sonrise.infinityfree.me/pages/HTML/credits.php" />
+</head>
 <section class="credits-section">
     <div class="credits-header">
         <h2>Project Attributions</h2>

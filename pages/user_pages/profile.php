@@ -49,9 +49,8 @@ if($_SESSION['oauth_provider'] === 'google') {
 <!-- Top Section -->
 <div class="profile-top">
     <div class="image-wrapper">
-        <img src="<?= xss_protect($_SESSION['user_picture'] ?? 'assets/default-avatar.png'); ?>" alt="User Profile">
+        <img src="<?= xss_protect($_SESSION['user_picture']) ?? '../../assets/Images/defaultavatar.svg'; ?>" alt="User Profile">
     </div>
-    <img src="../../../PHP_API_INTERGRATION/ASSETS/" alt="">
     <h2><?= xss_protect($_SESSION['full_name'] ?? 'Unknown Explorer'); ?></h2>
     
     <span class="email-subtext"><?= xss_protect($_SESSION['user_email'] ?? 'No email provided'); ?></span>
@@ -108,7 +107,7 @@ if($_SESSION['oauth_provider'] === 'google') {
 <div id="logoutModal" class="modal-overlay" style="display: none;">
     <div class="modal-content">
         <div class="modal-header">
-            <i class="fa-solid fa-circle-exclamation"></i>
+            <i class="fa-solid fa-circle-exclamation"></i> 
             <h3>Confirm Sign Out</h3>
             <p>Are you sure you want to leave your session?</p>
         </div>

@@ -1,9 +1,7 @@
 <?php require_once __DIR__ . '/../../components/universal_components/head_home.inc.php' ?>
-<?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
+<head>
+    <link rel="canonical" href="https://sonrise.infinityfree.me/pages/HTML/poems.php" />
+</head>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <?php require_once __DIR__ . '/../../components/universal_components/nav_home.inc.php'; ?>
 
