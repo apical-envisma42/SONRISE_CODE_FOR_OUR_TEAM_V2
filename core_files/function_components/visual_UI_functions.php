@@ -9,10 +9,10 @@ function get_dynamic_title() {
         'index.php'    => 'A Sanctuary for Poetry, Stories and Literature.',
         'poems.php'    => 'Our Literature',
         'about.php'    => 'About Us',
-        'login.php'    => 'Login',
         'login.html'   => 'Login',
         'credits.php'  => 'Credits',
-        'podcasts.php' => 'Podcasts'
+        'podcasts.php' => 'Podcasts',
+        'profile.php'  => 'Profile'
     ];
 
     $page_name = isset($titles[$current_file]) ? $titles[$current_file] : 'Welcome';

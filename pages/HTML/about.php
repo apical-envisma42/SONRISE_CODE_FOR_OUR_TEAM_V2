@@ -9,13 +9,13 @@
         <p class="subtitle">Bringing the dawn of literature to Ghana and beyond.</p>
     </section>
 
-    <!-- Founder Section -->
+    <!-- Developer 1: Jaden (Backend) -->
     <section class="founder-section">
         <div class="founder-container">
             <div class="founder-image">
                 <!-- PHOTO SPACE: Replace the src with your actual image path -->
                 <div class="photo-frame">
-                    <img src="../../assets/Images/Mr_Preprah.jpg" alt="Founder of Son-Rise">
+                    <img src="../../assets/Images/jaden_ag.png" alt="Founder of Son-Rise">
                 </div>
             </div>
             
@@ -23,13 +23,15 @@
                 <span class="label" style="font-size: 18px;">MEET THE DEVELOPERS</span>
                 <h2>Behind the Verses</h2>
                 <p>
-                    SonRise was born out of a passion for storytelling and the belief that every 
-                    writer deserves a stage. Our mission is to preserve the beauty of Ghanaian 
-                    poetry while providing a modern foundation for new voices to rise.
+                    A platform built for writers requires an equally reliable technical architecture. 
+                    Tasked with designing the logic and data structures of SonRise, the focus was to 
+                    ensure that every piece of literature, secure user session, and community interaction 
+                    runs seamlessly behind the scenes.
                 </p>
                 <p>
-                    From humble beginnings as a shared project between friends, this platform 
-                    now serves as a sanctuary for those who find solace in the written word.
+                    By bridging the gap between functional database design and a smooth interface, 
+                    this platform provides a modern, high-performance foundation capable of safely hosting 
+                    the next generation of exceptional Ghanaian storytellers.
                 </p>
                 <div class="signature">
                     <p><strong>Jaden William Bubune Agbaga</strong></p>
@@ -38,26 +40,29 @@
             </div>
         </div>
     </section>
-       <section class="founder-section">
+
+    <!-- Developer 2: Jeremiah (UI/UX) -->
+    <section class="founder-section">
         <div class="founder-container">
             <div class="founder-image">
                 <!-- PHOTO SPACE: Replace the src with your actual image path -->
                 <div class="photo-frame">
-                    <img src="../../assets/Images/Mr_Preprah.jpg" alt="Founder of Son-Rise">
+                    <img src="../../assets/Images/jerry_pic.png" alt="Founder of Son-Rise">
                 </div>
             </div>
             
             <div class="founder-text">
-                <span class="label">The Visionary</span>
+                <span class="label">MEET THE DEVELOPERS</span>
                 <h2>Behind the Verses</h2>
                 <p>
-                    Son-Rise was born out of a passion for storytelling and the belief that every 
-                    writer deserves a stage. Our mission is to preserve the beauty of Ghanaian 
-                    poetry while providing a modern foundation for new voices to rise.
+                    Great literature deserves a visual space that complements its depth. Jeremiah focused 
+                    on sculpting an intuitive user journey, crafting the interface of SonRise to feel like a 
+                    digital sanctuary where typography, whitespace, and structural harmony elevate the reading experience.
                 </p>
                 <p>
-                    From humble beginnings as a shared project between friends, this platform 
-                    now serves as a sanctuary for those who find solace in the written word.
+                    From early wireframes to interactive layouts, every visual choice was designed to ensure 
+                    that navigating through creative writing feels effortless, inviting, and memorable for 
+                    both creators and readers alike.
                 </p>
                 <div class="signature">
                     <p><strong>Jeremiah Ayoka Osei</strong></p>
@@ -67,7 +72,8 @@
         </div>
     </section>
 
-       <section class="founder-section">
+    <!-- Founder: Mr. Gideon Akomea Peprah (Left Unchanged) -->
+    <section class="founder-section">
         <div class="founder-container">
             <div class="founder-image">
                 <!-- PHOTO SPACE: Replace the src with your actual image path -->

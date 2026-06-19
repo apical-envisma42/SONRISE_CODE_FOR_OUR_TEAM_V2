@@ -397,7 +397,7 @@ while ($row = mysqli_fetch_assoc($result)):
 
             <span class="read-more-text"><strong>READ MORE <i class="fa-solid fa-chevron-right"></strong></i></span>
             <br><br>
-            <small>By <?= xss_protect($row['poem_author']); ?> • Published on <?= xss_protect($publishDate); ?></small>
+            <small>By <span style="color: #dc3545;"><strong><?= xss_protect($row['poem_author']); ?></strong> </span> • Published on <?= xss_protect($publishDate); ?></small>
             <br>
             <small style="color: #dc3545;">Click To Read More</small>
         </div>

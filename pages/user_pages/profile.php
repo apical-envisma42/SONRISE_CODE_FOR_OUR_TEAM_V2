@@ -49,8 +49,7 @@ if($_SESSION['oauth_provider'] === 'google') {
 <!-- Top Section -->
 <div class="profile-top">
     <div class="image-wrapper">
-        <img src="<?= xss_protect($_SESSION['user_picture']) ?? '../../assets/Images/defaultavatar.svg'; ?>" alt="User Profile">
-    </div>
+    <img src="<?= xss_protect($_SESSION['user_picture'] ?: '../../assets/Images/defaultavatar.svg'); ?>" alt="User Profile">    </div>
     <h2><?= xss_protect($_SESSION['full_name'] ?? 'Unknown Explorer'); ?></h2>
     
     <span class="email-subtext"><?= xss_protect($_SESSION['user_email'] ?? 'No email provided'); ?></span>
