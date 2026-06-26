@@ -1,14 +1,276 @@
-.security-icon {
-    font-size: 60px;
-    color: #d32f2f; /* Alert Red */
+:root {
+    --primary-red: #dc3545; 
+    --accent-gold: #FFD700;
+    --text-dark: #333;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --crimson-red: #dc3545;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Core Navigation Elements Sync */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.nav_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-dark);
+    text-transform: uppercase;
+}
+
+.logo-text span {
+    color: var(--crimson-red);
+}
+
+/* Primary Central Container Framework Layout */
+.security-container {
+    max-width: 650px;
+    width: 90%;
+    margin: 60px auto;
+    padding: 45px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    border-top: 6px solid var(--crimson-red);
+    text-align: center;
+    animation: cardPopIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes cardPopIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cyber Shield Icon Vector Styles */
+.security-icon-wrapper {
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.security-icon-wrapper i.fa-shield-halved {
+    font-size: 75px;
+    color: var(--crimson-red);
+    opacity: 0.9;
+}
+
+.security-icon-wrapper .badge-lock {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: var(--white);
+    border: 2px solid var(--crimson-red);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--crimson-red);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.security-container h1 {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.security-tag {
+    display: inline-block;
+    background: rgba(220, 53, 69, 0.1);
+    color: var(--crimson-red);
+    padding: 5px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 20px;
 }
-.error-title {
-    color: var(--gh-gray);
-    font-weight: 800;
-}
-.instruction {
-    color: #666;
-    margin: 15px 0 25px 0;
+
+.security-desc {
+    color: #555;
+    font-size: 1.05rem;
     line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Diagnostics Block layout mirror to Analysis layout format */
+.diagnostics-area {
+    text-align: left;
+    background: rgba(0, 0, 0, 0.02);
+    padding: 25px 30px;
+    border-radius: 12px;
+    border-left: 3px solid var(--crimson-red);
+    margin-bottom: 35px;
+}
+
+.diagnostics-area h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.diagnostics-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.diagnostics-list li {
+    font-size: 0.88rem;
+    color: #555;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.diagnostics-list li i {
+    color: var(--crimson-red);
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+/* Interactive Interface Control Triggers Alignment Row */
+.action-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn_secondary {
+    background: var(--white);
+    color: var(--text-dark);
+    border: 2px solid #e2e8f0;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn_secondary:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: translateY(-3px) scale(1.02);
+}
+
+.btn_primary {
+    background: var(--crimson-red);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn_primary:hover {
+    background: var(--accent-gold);
+    color: #000;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+}
+
+/* System Footer Styles Sync */
+.modern-footer {
+    background: #111;
+    color: #a0a0a0;
+    padding: 40px 5% 30px;
+    margin-top: auto;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.legal-stack {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    background: var(--crimson-red);
+    border-radius: 50%;
+}
+
+@media (max-width: 576px) {
+    .security-container {
+        padding: 30px 20px;
+        margin: 30px auto;
+    }
+    .action-row {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn_primary, .btn_secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
 }

@@ -17,7 +17,7 @@
                Son-Rise is an organization dedicated to publishing articles, poems and stories. Our poems and stories range from different genres and topics.
             </p>
             <br>
-            <button class="btn_learn_more" type="button">Learn More</button>
+            <a href="<?= xss_protect(BASE_URL); ?>/pages/HTML/poems.php"><button class="btn_learn_more" type="button">Learn More</button></a>
             
             <div class="hero-main-img">
                 <img src="./assets/Images/Reading_Teenager_student.jpg" alt="welcome image">

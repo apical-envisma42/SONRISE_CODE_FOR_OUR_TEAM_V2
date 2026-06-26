@@ -315,7 +315,7 @@ $show_maintenance_modal = isset($_GET['check_maintenance']) && $_GET['check_main
 <?php
 global $dbconn;
 
-$sql = "SELECT id, poem_title, poem_slug, poem_genre, poem_author, poem_image, poem_content, created_at FROM poems ORDER BY id DESC";
+$sql = "SELECT id, poem_title, poem_slug, poem_genre, poem_author, poem_image, poem_content, created_at FROM poems WHERE is_published = 1 ORDER BY id DESC";
 $result = mysqli_query($dbconn, $sql);
 
 if ($result && mysqli_num_rows($result) > 0):

@@ -36,6 +36,12 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     </li>
 
     <li>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/user_pages/add_poem.php" class="<?= ($current_page == 'add_poem.php') ? 'active' : '' ?>">Add Poem</a>
+    </li>
+
+
+
+    <li>
         <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/gallery.php" class="<?= ($current_page == 'gallery.php') ? 'active' : '' ?>">The Gallery</a>
     </li>
 
@@ -43,9 +49,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/about.php" class="<?= ($current_page == 'about.php') ? 'active' : '' ?>">About Us</a>
     </li>
 
+
+
     <li class="<?= xss_protect($profile_img_class); ?>">
-        <a href="<?= xss_protect(BASE_URL); ?>./pages/user_pages/user_inbox.php" class="<?= ($current_page == 'user_inbox.php') ? 'active' : '' ?>">Your Inbox</a>
+        <a href="<?= xss_protect(BASE_URL); ?>./pages/user_pages/user_inbox.php" class="<?= ($current_page == 'user_inbox.php') ? 'active' : '' ?>">Inbox</a>
     </li>
+
+
 
 <li class="<?= xss_protect($login_link_class); ?>">
         <a href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/index.php" style="font-weight: bold; color: #dc3545;">Login</a>  

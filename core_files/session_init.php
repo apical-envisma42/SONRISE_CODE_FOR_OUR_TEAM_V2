@@ -1,5 +1,6 @@
 <?php
-$session_duration = 2592000;
+$session_duration = 2592000; //  FOR 30 Days
+$session100day_duraion = 8640000;
 $is_secure = (
     (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
     (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ||
@@ -15,7 +16,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_name("SNR_SESS");
     
     session_set_cookie_params([
-        'lifetime' => $session_duration,
+        'lifetime' => $session100day_duraion,
         'path' => '/',
         'domain' => $current_domain, 
         'secure' => $is_secure,        

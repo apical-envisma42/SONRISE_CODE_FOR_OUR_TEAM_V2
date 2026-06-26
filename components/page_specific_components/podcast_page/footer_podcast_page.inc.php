@@ -11,7 +11,7 @@
             </div>
             
             <nav class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold tracking-wider uppercase text-gray-400">
-                <a href="../../../index.php" class="hover:text-[#dc3545] transition-colors duration-200">Home</a>
+                <a href="<?= xss_protect(BASE_URL); ?>/index.php" class="hover:text-[#dc3545] transition-colors duration-200">Home</a>
                 <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php" class="hover:text-[#dc3545] transition-colors duration-200">Library</a>
                 <a href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/index.php" class="hover:text-[#dc3545] transition-colors duration-200">Join</a>
                 <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/gallery.php" class="hover:text-[#dc3545] transition-colors duration-200">Our Gallery</a>

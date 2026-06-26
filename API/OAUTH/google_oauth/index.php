@@ -17,6 +17,10 @@ $google_client->addScope("email");
 $google_client->addScope("profile");
 
 $google_url = $google_client->createAuthUrl();
+
+if(isset($_GET['page_denied']) && ($_GET['page_denied']) === "denied_access_Add_poem") {
+    $h2_login = "Login To Add Your Poem";
+}
 ?>
 <head>
     <link rel="canonical" href="https://sonrise.infinityfree.me/API/OAUTH/google_oauth/index.php" >
@@ -29,7 +33,7 @@ $google_url = $google_client->createAuthUrl();
     <i class="fa-solid fa-arrow-left"></i> Back To Home
 </a>
             
-            <h2>Welcome Back</h2>
+            <h2><?= xss_protect($h2_login ?? 'Welcome To Sonrise') ?></h2>
             <p>Login to continue your creative journey.</p>
 
             <form action="" class="auth-form">

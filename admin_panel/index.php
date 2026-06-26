@@ -117,7 +117,7 @@ $total_poems = mysqli_fetch_assoc($total_poems_query)['total'];
         </div>
 
         <div class="quick-actions">
-            <a href="<?= xss_protect(BASE_URL_ADMIN); ?>./pages/add_poem.php" class="action-card">
+            <a href="<?= xss_protect(BASE_URL_ADMIN); ?>/pages/add_poem_admin.php" class="action-card">
                 <i class='bx bxs-pen'></i>
                 <span>Write New Poem</span>
             </a>

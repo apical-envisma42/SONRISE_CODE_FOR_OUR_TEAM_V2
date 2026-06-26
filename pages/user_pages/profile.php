@@ -59,7 +59,7 @@ if($_SESSION['oauth_provider'] === 'google') {
         <div class="profile-grid">
             <div class="grid-item">
                 <span class="label">POEMS PUBLISHED</span>
-                <span class="value">0 Works</span>
+                <span class="value"><?= xss_protect($_SESSION['POEMS_ADDED'] ?? '0') ?> Works</span>
             </div>
             <div class="grid-item">
                 <span class="label">AUTH METHOD</span>
@@ -80,6 +80,10 @@ if($_SESSION['oauth_provider'] === 'google') {
     
     <a href="../../admin_panel/index.php" class="btn-profile btn-admin <?= xss_protect($hidden_class ?? 'hidden_admin'); ?>">
         <i class="fa-solid fa-screwdriver-wrench"></i> Admin Panel
+    </a>
+
+    <a href="./add_poem.php" class="btn-profile btn-explore">
+        <i class="fa-solid fa-pen"></i> Add A Poem
     </a>
 
     <a href="../HTML/poems.php" class="btn-profile btn-explore">

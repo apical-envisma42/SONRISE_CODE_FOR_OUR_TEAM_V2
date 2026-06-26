@@ -8,7 +8,7 @@
         <nav class="footer-nav">
             <a href="../../index.php">Home</a>
             <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/poems.php">Library</a>
-            <a href="<?= xss_protect(BASE_URL); ?>./API/OAUTH/google_oauth/index.php">Join</a>
+            <a href="<?= xss_protect(BASE_URL); ?>/pages/user_pages/add_poem.php">Join Us</a>
             <a href="#">Legal</a>
             <a href="<?= xss_protect(BASE_URL); ?>./pages/HTML/credits.php">Credits</a>
         </nav>

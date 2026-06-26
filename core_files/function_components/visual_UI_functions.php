@@ -6,13 +6,15 @@ function get_dynamic_title() {
     $current_file = basename($_SERVER['SCRIPT_NAME']); 
 
     $titles = [
-        'index.php'    => 'A Sanctuary for Poetry, Stories and Literature.',
-        'poems.php'    => 'Our Literature',
-        'about.php'    => 'About Us',
-        'login.html'   => 'Login',
-        'credits.php'  => 'Credits',
-        'podcasts.php' => 'Podcasts',
-        'profile.php'  => 'Profile'
+        'index.php'            => 'A Sanctuary for Poetry, Stories and Literature.',
+        'poems.php'            => 'Our Literature',
+        'about.php'            => 'About Us',
+        'login.html'           => 'Login',
+        'credits.php'          => 'Credits',
+        'podcasts.php'         => 'Podcasts',
+        'profile.php'          => 'Profile',
+        'maintenance_page.php' => 'Maintenance',
+        'add_poem.php'         => 'Add Poem',
     ];
 
     $page_name = isset($titles[$current_file]) ? $titles[$current_file] : 'Welcome';
@@ -47,7 +49,7 @@ return mysqli_fetch_all($recent_query, MYSQLI_ASSOC); // EXPLAIN WHAT THIS DOES
         $error_code    = $e->getCode();
         $error_message = $e->getMessage();
 
-        error_log("ERROR GETTING RECENT ACTIVE USERS IN ADMIN PAGE INDEX.PHP. ERROR CODE: " . $error_code . " ERROR MESSAGE: " . xss_protect($error_message));
+        error_log("ERROR GETTING RECENT ACTIVE USERS IN ADMIN PAGE INDEX.PHP. ERROR CODE: " . $error_code . " ERROR MESSAGE: " . $error_message);
         return [];
     }
 

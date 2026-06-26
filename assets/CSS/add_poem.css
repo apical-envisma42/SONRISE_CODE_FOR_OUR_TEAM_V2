@@ -1,0 +1,230 @@
+    :root {
+        --crimson-brand: #dc3545;
+        --crimson-hover: #b21f2d;
+        --dark-charcoal: #111111;
+        --light-bg: #fdfdfd;
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body {
+        background-color: var(--light-bg);
+        font-family: 'Inter', sans-serif;
+    }
+
+    ::selection {
+        background-color: var(--crimson-brand);
+        color: #ffffff;
+    }
+
+    .poem-submission-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 5% 100px;
+        box-sizing: border-box;
+    }
+
+    .form-header {
+        text-align: center;
+        padding: 40px 20px 50px;
+        background: linear-gradient(180deg, rgba(220, 53, 69, 0.02) 0%, rgba(255,255,255,0) 100%);
+        border-radius: 20px;
+        margin-bottom: 40px;
+    }
+
+    .form-header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        color: var(--dark-charcoal);
+        margin: 0 0 15px 0;
+        font-weight: 700;
+    }
+
+    .form-header p {
+        color: #666;
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .submission-card {
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 24px;
+        box-shadow: var(--card-shadow);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        border-top: 5px solid var(--crimson-brand);
+        transition: var(--transition-smooth);
+    }
+
+    .submission-card:hover {
+        box-shadow: 0 15px 35px rgba(220, 53, 69, 0.08);
+    }
+
+    .form-grid-two {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+    }
+
+    .sr-form-group {
+        margin-bottom: 30px;
+    }
+
+    .sr-form-group label {
+        display: block;
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: var(--dark-charcoal);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    .sr-input, .sr-select, .sr-textarea {
+        width: 100%;
+        padding: 14px 18px;
+        border: 1px solid rgba(220, 53, 69, 0.15);
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: var(--dark-charcoal);
+        font-size: 0.95rem;
+        font-family: 'Inter', sans-serif;
+        transition: var(--transition-smooth);
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .sr-input:focus, .sr-select:focus, .sr-textarea:focus {
+        border-color: var(--crimson-brand);
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+        background: #ffffff;
+    }
+
+    .sr-textarea {
+        font-family: 'Lora', serif;
+        font-size: 1.2rem;
+        line-height: 1.75;
+        resize: vertical;
+        min-height: 380px;
+        padding: 25px;
+        background: #fffdf9; 
+        border-left: 4px solid var(--crimson-brand);
+    }
+
+    .file-drop-area {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 40px 20px;
+        border: 2px dashed rgba(220, 53, 69, 0.25);
+        border-radius: 14px;
+        background-color: rgba(220, 53, 69, 0.01);
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        text-align: center;
+    }
+
+    .file-drop-area:hover, .file-drop-area.dragover {
+        border-color: var(--crimson-brand);
+        background-color: rgba(220, 53, 69, 0.04);
+        transform: translateY(-2px);
+    }
+
+    .file-drop-area i {
+        font-size: 2.5rem;
+        color: var(--crimson-brand);
+        margin-bottom: 12px;
+        transition: var(--transition-smooth);
+    }
+
+    .file-drop-area:hover i {
+        transform: scale(1.1);
+    }
+
+    .file-drop-area span {
+        color: #555;
+        font-size: 0.9rem;
+        font-weight: 500;
+        max-width: 400px;
+        line-height: 1.4;
+    }
+
+    .file-input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .submit-action-row {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 30px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-cancel {
+        color: #666;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: var(--transition-smooth);
+    }
+
+    .btn-cancel:hover {
+        color: var(--crimson-brand);
+    }
+
+    .btn-submit-poem {
+        background: var(--crimson-brand);
+        color: #ffffff;
+        border: none;
+        padding: 0.9rem 2.2rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 50px; /* Aligns with your pills/rounded look */
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth pop action */
+    }
+
+    .btn-submit-poem:hover {
+        background: var(--crimson-hover);
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 8px 25px rgba(220, 53, 69, 0.35);
+    }
+
+    @media (max-width: 768px) {
+        .poem-submission-container {
+            padding-top: 30px;
+        }
+        .form-header h1 {
+            font-size: 2.2rem;
+        }
+        .submission-card {
+            padding: 30px 20px;
+        }
+        .form-grid-two {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        .submit-action-row {
+            flex-direction: column-reverse;
+            gap: 20px;
+            text-align: center;
+        }
+        .btn-submit-poem, .btn-cancel {
+            width: 100%;
+            text-align: center;
+        }
+    }

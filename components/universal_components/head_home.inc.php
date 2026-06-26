@@ -9,7 +9,7 @@ require_once __DIR__ . '/../defined_code.php';
     <meta name="title" content="SONRISE | A Sanctuary for Poetry, Stories and Literature">
     <meta name="description" content="Explore a world of dark gothic thrillers, nature-inspired poems, and stories of self-discovery. Join our community of writers on SONRISE, a secure platform for creative literature.">
     <meta name="keywords" content="poetry, creative writing, short stories, gothic thrillers, literature platform, self-discovery, SONRISE, Ghana poets">
-    <meta name="author" content="Gideon Akomea Peprah">
+    <meta name="author" content="Jaden William Bubune Agbaga">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?= xss_protect(BASE_URL); ?>">

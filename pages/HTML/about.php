@@ -2,18 +2,54 @@
  require_once __DIR__ . '/../../components/universal_components/nav_home.inc.php'; 
 ?>
 
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    .scroll-btn-container {
+        text-align: right; 
+        margin-top: 20px;
+        width: 100%;
+    }
+    .scroll-next-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: #dc3545;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        transition: background-color 0.2s ease-in-out, transform 0.2s ease;
+    }
+    .scroll-next-btn:hover {
+        background-color: #bd2130;
+        transform: translateY(2px);
+    }
+
+    @media screen and (max-width: 768px) {
+        .scroll-btn-container {
+            text-align: center; 
+            margin-top: 30px;  
+        }
+        .scroll-next-btn {
+            width: 80%;         
+            justify-content: center;
+        }
+    }
+</style>
+
 <main class="about-page">
-    <!-- Hero Section -->
     <section class="about-hero">
         <h1>Our Story</h1>
         <p class="subtitle">Bringing the dawn of literature to Ghana and beyond.</p>
     </section>
 
-    <!-- Developer 1: Jaden (Backend) -->
-    <section class="founder-section">
+    <section id="profile-jaden" class="founder-section">
         <div class="founder-container">
             <div class="founder-image">
-                <!-- PHOTO SPACE: Replace the src with your actual image path -->
                 <div class="photo-frame">
                     <img src="../../assets/Images/jaden_ag.png" alt="Founder of Son-Rise">
                 </div>
@@ -37,22 +73,26 @@
                     <p><strong>Jaden William Bubune Agbaga</strong></p>
                     <small><span style="color: #dc3545; font-size: 16px; font-weight:bold;">BACKEND DEVELOPER</span> Of <span style="color: #dc3545; font-size: 16px"><strong>SONRISE</strong></span></small>
                 </div>
+
+                <div class="scroll-btn-container">
+                    <a href="#profile-jeremiah" class="scroll-next-btn">
+                        Next Person &darr;
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Developer 2: Jeremiah (UI/UX) -->
-    <section class="founder-section">
+    <section id="profile-jeremiah" class="founder-section">
         <div class="founder-container">
             <div class="founder-image">
-                <!-- PHOTO SPACE: Replace the src with your actual image path -->
                 <div class="photo-frame">
                     <img src="../../assets/Images/jerry_pic.png" alt="Founder of Son-Rise">
                 </div>
             </div>
             
             <div class="founder-text">
-                <span class="label">MEET THE DEVELOPERS</span>
+                <span class="label">The Visionary</span>
                 <h2>Behind the Verses</h2>
                 <p>
                     Great literature deserves a visual space that complements its depth. Jeremiah focused 
@@ -68,15 +108,19 @@
                     <p><strong>Jeremiah Ayoka Osei</strong></p>
                     <small><span style="color: #dc3545; font-size: 16px; font-weight:bold;">UI/UX DEVELOPER</span> Of <span style="color: #dc3545; font-size: 16px"><strong>SONRISE</strong></span></small>
                 </div>
+
+                <div class="scroll-btn-container">
+                    <a href="#profile-peprah" class="scroll-next-btn">
+                        Next Person &darr;
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Founder: Mr. Gideon Akomea Peprah (Left Unchanged) -->
-    <section class="founder-section">
+    <section id="profile-peprah" class="founder-section">
         <div class="founder-container">
             <div class="founder-image">
-                <!-- PHOTO SPACE: Replace the src with your actual image path -->
                 <div class="photo-frame">
                     <img src="../../assets/Images/Mr_Preprah.jpg" alt="Founder of Son-Rise">
                 </div>
@@ -97,6 +141,12 @@
                 <div class="signature">
                     <p><strong>MR. GIDEON AKOMEA PEPRAH</strong></p>
                     <small>Founder Of <span style="color: #dc3545;"><strong>SONRISE</strong></span></small>
+                </div>
+                
+                <div class="scroll-btn-container">
+                    <a href="#profile-jaden" class="scroll-next-btn" style="background-color: #6c757d;">
+                        Back to Top &uarr;
+                    </a>
                 </div>
             </div>
         </div>
