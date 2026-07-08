@@ -41,10 +41,10 @@ if (!defined('BASE_URL')) {
             
             <p>Regrettably, we are unable to publish your piece on our main feeds at this time. This is typically due to a layout variance, standard formatting deviations, or core curation alignment guidelines.</p>
             
-            <p>Please do not let this deter you—rejection is an inherent component of the creative progression. We strongly encourage you to re-align your work, adjust formatting layouts, and submit an alternate draft.</p>
+            <p>Please do not let this deter you, rejection is an inherent component of the creative progression. We strongly encourage you to re-align your work, adjust formatting layouts, and submit an alternate draft.</p>
             
             <p style="text-align: center;">
-                <a href="<?= BASE_URL; ?>/pages/user_pages/add_poem_admin.php" class="btn-link">Submit an Alternative Draft</a>
+                <a href="<?= htmlspecialchars(BASE_URL ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5 | ENT_DISALLOWED, 'UTF-8'); ?>/pages/user_pages/add_poem_admin.php" class="btn-link">Submit an Alternative Draft</a>
             </p>
             
             <p>We appreciate your dedication to the craft and wish you the absolute best in your writing journey.</p>

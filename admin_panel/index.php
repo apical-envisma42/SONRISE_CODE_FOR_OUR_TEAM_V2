@@ -4,15 +4,6 @@ require_once __DIR__ . '/../core_files/session_init.php';
 require_once __DIR__ . '/../core_files/functions.php'; 
 require_once __DIR__ . '/components/defined_code_admin.php';
 
-if(!is_admin()) {
-    header("Location: ../pages/user_pages/profile.php");
-    exit();
-}
-
-if(!check_logged_in()) {
-    header("Location: ../pages/user_pages/profile.php");
-    exit();
-}
 global $dbconn;
 
 $total_users_query = mysqli_query($dbconn, "SELECT COUNT(id) as total FROM oauth_users");
@@ -28,6 +19,7 @@ $total_poems = mysqli_fetch_assoc($total_poems_query)['total'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sonrise Admin | Dashboard</title>
+    <link rel="shortcut icon" href="<?= xss_protect(BASE_URL_ADMIN); ?>/assets/Logos/sonrise.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/all_users.css">
     <link rel="stylesheet" href="./assets/css/main_dashboard.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -68,13 +60,6 @@ $total_poems = mysqli_fetch_assoc($total_poems_query)['total'];
                     <p>Published Poems</p>
                 </div>
             </div>
-            <!-- <div class="stat-card">
-                <i class='bx bxs-show'></i>
-                <div>
-                    <h3>1.2k</h3>
-                    <p>Monthly Views</p>
-                </div> -->
-            </div>
         </div>
 
         <div class="table-container">
@@ -82,58 +67,64 @@ $total_poems = mysqli_fetch_assoc($total_poems_query)['total'];
                 <h2>Last 5 Recent Joiners</h2>
                 <a href="./pages/all_users.php" style="color: var(--crimson-red); text-decoration: none; font-size: 0.9rem; font-weight: 600;">View All</a>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>User Name</th>
-                        <th>Email Address</th>
-                        <th>Status</th>
-                        <th>Joined</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                    $last_5_users_joined = get_recent_active_users_for_admin($dbconn);
-                    if(!empty($last_5_users_joined)) {
-                        foreach($last_5_users_joined as $user) {
-                            $status_class = get_account_colour($user['account_status']);
-                    }
-                    ?>
-                    <tr>
-                        <td><strong><?= xss_protect($user['oauth_full_name']); ?></strong></td>
-                        <td><?= xss_protect($user['oauth_email']); ?></td>
-                        <td><span class="badge <?= xss_protect($status_class); ?>"><?= ucfirst($user['account_status']); ?></span></td>
-                        <td><?= date("M d, H:i", strtotime($user['created_at'])); ?></td>
-                    </tr>
-                    <?php 
-                    } else { 
-?>
-    <tr>
-        <td colspan="4" style="text-align:center;">No new users joined in the last 2 weeks.</td>
-    </tr>
-<?php }; ?>
-                </tbody>
-            </table>
+            <!-- Added a dedicated wrapping layout container block to allow responsive swipe manipulation on mobile viewports -->
+            <div style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <table style="min-width: 600px;">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email Address</th>
+                            <th>Status</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $last_5_users_joined = get_recent_active_users_for_admin($dbconn);
+                        if(!empty($last_5_users_joined)) {
+                            foreach($last_5_users_joined as $user) {
+                                $status_class = get_account_colour($user['account_status']);
+                        ?>
+                        <tr>
+                            <td><strong><?= xss_protect($user['oauth_full_name']); ?></strong></td>
+                            <td><?= xss_protect($user['oauth_email']); ?></td>
+                            <td><span class="badge <?= xss_protect($status_class); ?>"><?= ucfirst($user['account_status']); ?></span></td>
+                            <td><?= date("M d, H:i", strtotime($user['created_at'])); ?></td>
+                        </tr>
+                        <?php 
+                            } // Corrected closing execution brace positioning for the loop parameters frame mapping
+                        } else { 
+                        ?>
+                        <tr>
+                            <td colspan="4" style="text-align:center;">No new users joined in the last 2 weeks.</td>
+                        </tr>
+                        <?php }; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <div class="quick-actions">
-            <a href="<?= xss_protect(BASE_URL_ADMIN); ?>/pages/add_poem_admin.php" class="action-card">
-                <i class='bx bxs-pen'></i>
-                <span>Write New Poem</span>
-            </a>
-            <a href="<?= xss_protect(BASE_URL_ADMIN); ?>./pages/all_users.php" class="action-card">
-                <i class='bx bxs-user-plus'></i>
-                <span>Manage Users</span>
-            </a>
-            <!-- <a href="#" class="action-card">
-                <i class='bx bxs-bar-chart-alt-2'></i>
-                <span>View Analytics</span>
-            </a>
-            <a href="#" class="action-card">
-                <i class='bx bxs-envelope'></i>
-                <span>System Emails</span>
-            </a> -->
-        </div>
+<div class="quick-actions">
+    <a href="<?= xss_protect(BASE_URL_ADMIN); ?>/pages/add_poem_admin.php" class="action-card">
+        <i class='bx bxs-pen'></i>
+        <span>Write New Poem</span>
+    </a>
+
+    <a href="<?= xss_protect(BASE_URL_ADMIN); ?>./pages/all_users.php" class="action-card">
+        <i class='bx bxs-user-plus'></i>
+        <span>Manage Users</span>
+    </a>
+
+    <a href="<?= xss_protect(BASE_URL_ADMIN); ?>/pages/review_poem.php" class="action-card">
+        <i class='bx bx-clipboard'></i>
+        <span>Review Poems</span>
+    </a>
+
+    <a href="<?= xss_protect(BASE_URL_ADMIN); ?>/pages/all_poems.php" class="action-card">
+        <i class='bx bx-library'></i>
+        <span>View All Poems</span>
+    </a>
+</div>
     </main>
 
 </body>

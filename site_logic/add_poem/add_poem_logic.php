@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../../core_files/init_core_files.php';
 
-
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: " . BASE_URL . "/pages/HTML/poems.php");
     exit();
@@ -15,14 +14,33 @@ if (!isset($_POST['csrf_token']) || !isset($_SESSION['csrf_token']) || !hash_equ
 global $dbconn;
 
 $poem_title = trim($_POST['poem_title'] ?? '');
-$poem_genre = trim($_POST['poem_genre'] ?? '');
+$selected_genre = trim($_POST['poem_genre'] ?? '');
 $poem_content = trim($_POST['poem_content'] ?? '');
 $poem_author = $_SESSION['full_name'] ?? 'Anonymous';
 $author_email = $_SESSION['user_email'] ?? 'Anonymous';
 
-if (empty($poem_title) || empty($poem_genre) || empty($poem_content)) {
+if (empty($poem_title) || empty($selected_genre) || empty($poem_content)) {
     header("Location: " . BASE_URL . "/pages/error_pages/display_error.php");
     exit();
+}
+
+$final_genre = '';
+
+// Check if User opted to use a customized category value entry field block
+if ($selected_genre === 'OTHER_CUSTOM') {
+    $custom_input = isset($_POST['custom_genre']) ? trim($_POST['custom_genre']) : '';
+    
+    if (empty($custom_input)) {
+        die("Validation Failure: You selected 'Other' but left the custom genre input blank.");
+    }
+    
+    $final_genre = ucwords(strtolower($custom_input));
+} else {
+    $final_genre = $selected_genre;
+}
+
+if (empty($final_genre) || mb_strlen($final_genre) > 50) {
+    die("Validation Error: Please select or type a valid genre format up to 50 characters.");
 }
 
 $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $poem_title), '-')) . '-' . bin2hex(random_bytes(4));
@@ -52,8 +70,8 @@ if (isset($_FILES['poem_image']) && $_FILES['poem_image']['error'] === UPLOAD_ER
         header("Location: " . BASE_URL . "/pages/error_pages/display_error.php");
         exit();
     }
-    
-    $upload_directory = __DIR__ . '/../../uploads/poem_images/';
+     
+    $upload_directory = __DIR__ . '/../../uploads/poem_uploaded_images/';
     if (!is_dir($upload_directory)) {
         mkdir($upload_directory, 0755, true);
     }
@@ -71,7 +89,7 @@ if (isset($_FILES['poem_image']) && $_FILES['poem_image']['error'] === UPLOAD_ER
         exit();
     }
     
-    $image_destination_path = 'uploads/poem_images/' . $cleaned_filename;
+    $image_destination_path = $cleaned_filename;
 }
 
 $insert_statement = mysqli_prepare(
@@ -84,13 +102,14 @@ if (!$insert_statement) {
     exit();
 }
 
+// FIXED: Now accurately binding $final_genre into parameters array structure map line
 mysqli_stmt_bind_param(
     $insert_statement, 
     "sssssss", 
     $poem_title, 
     $slug, 
     $poem_author, 
-    $poem_genre, 
+    $final_genre, 
     $poem_content, 
     $image_destination_path,
     $author_email
@@ -99,7 +118,7 @@ mysqli_stmt_bind_param(
 if (mysqli_stmt_execute($insert_statement)) {
     mysqli_stmt_close($insert_statement);
     $_SESSION['POEMS_ADDED']++;
-    header("Location: " . BASE_URL . "/pages/HTML/poems.php?status=submitted_for_review");
+    header("Location: " . BASE_URL . "/pages/user_pages/poem_submission_success.php?status=submitted_for_review");
     exit();
 } else {
     mysqli_stmt_close($insert_statement);

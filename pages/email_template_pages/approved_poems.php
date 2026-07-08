@@ -52,7 +52,7 @@ if (!defined('BASE_URL')) {
             <p>Warmly,<br><strong>The SonRise Editorial Board</strong></p>
         </div>
         <div class="email-footer">
-            &copy; <?= date('Y'); ?> SonRise. All creative rights remain with the author.
+            &copy; <?= htmlspecialchars(date('Y') ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5 | ENT_DISALLOWED, 'UTF-8');; ?> SonRise. All creative rights remain with the author.
         </div>
     </div>
 </body>

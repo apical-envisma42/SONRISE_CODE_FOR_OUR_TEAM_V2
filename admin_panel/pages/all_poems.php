@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../core_files/init_core_files.php';
 require_once __DIR__ . '/../components/defined_code_admin.php';
 
+
 // Ensure user is authenticated before pulling data records
 if(!check_logged_in()) {
     header("Location: " . BASE_URL . "/API/OAUTH/google_oauth/index.php");
@@ -35,6 +36,7 @@ if (!$user_poems_result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Creative Library | Sonrise</title>
+    <link rel="shortcut icon" href="<?= xss_protect(BASE_URL_ADMIN); ?>/assets/Logos/sonrise.png" type="image/x-icon">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL_ADMIN); ?>/assets/css/review_poem.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL_ADMIN); ?>/assets/css/search_bar_admin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -151,7 +153,7 @@ if (!$user_poems_result) {
                                     <td>
                                         <div class="meta-flex-cell">
                                             <?php if (!empty($poem['poem_image'])): ?>
-                                                <img src="<?= xss_protect(BASE_URL); ?>/assets/poem_uploaded_images/<?= xss_protect($poem['poem_image']) ?>" class="poem-thumbnail" alt="Cover Art">
+                                                <img src="<?= xss_protect(BASE_URL); ?>/uploads/poem_uploaded_images/<?= xss_protect($poem['poem_image']) ?>" class="poem-thumbnail" alt="Cover Art">
                                             <?php else: ?>
                                                 <div class="poem-thumbnail" style="display:flex; align-items:center; justify-content:center; color:#94a3b8;">
                                                     <i class='bx bx-image' style="font-size: 1.5rem;"></i>
@@ -159,14 +161,14 @@ if (!$user_poems_result) {
                                             <?php endif; ?>
                                             
                                             <div style="display: flex; flex-direction: column; gap: 2px;">
-                                                <span style="font-weight: 600; color: var(--text-dark);"><?= xss_protect($poem['poem_title']); ?></span>
+                                                <span class="searchable-title" style="font-weight: 600; color: var(--text-dark);"><?= xss_protect($poem['poem_title']); ?></span>
                                                 <span style="color: var(--text-light); font-size: 0.85rem; max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                                     <?= xss_protect(strip_tags($poem['poem_content'])); ?>
                                                 </span>
                                             </div>
                                         </div>
                                     </td>
-                                    <td><span class="badge active"><?= xss_protect($poem['poem_genre']); ?></span></td>
+                                    <td><span class="badge active searchable-genre"><?= xss_protect($poem['poem_genre']); ?></span></td>
                                     <td><?= date("M d, Y", strtotime($poem['created_at'])); ?></td>
                                     <td>
                                         <?php if (intval($poem['is_published']) === 1): ?>
@@ -215,83 +217,40 @@ if (!$user_poems_result) {
         </section>
     </main>
 
+    <!-- Post Interception Form Block for Data Operations Processing -->
     <form id="directUserDestructionForm" action="<?= BASE_URL_ADMIN; ?>/admin_logic/POEM_MANAGEMENT_LOGIC/all_poems_logic.php" method="POST" style="display: none !important;">
         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
         <input type="hidden" name="poem_id" id="destructionFormId" value="0">
         <input type="hidden" name="moderation_action" value="reject"> 
     </form>
 
-    <div id="crimsonDeleteAlert" class="crimson-alert-overlay">
-        <div class="crimson-alert-box">
-            <div class="crimson-alert-icon"><i class='bx bx-error-alt'></i></div>
-            <h2>Confirm Permanent Deletion</h2>
-            <p>Are you completely sure you want to permanently delete <strong id="deleteTargetTitle">"this poem"</strong>?</p>
-            <div class="crimson-alert-actions">
-                <button type="button" class="alert-btn-cancel" onclick="dismissDeleteAlert()">Cancel</button>
-                <button type="button" class="alert-btn-confirm" onclick="executePermanentDestruction()">Delete Permanently</button>
-            </div>
+<!-- Delete Confirmation Modal -->
+<div id="crimsonDeleteAlert" class="crimson-alert-overlay">
+    <div class="crimson-alert-box">
+        <div class="crimson-alert-icon">
+            <i class='bx bx-error-alt'></i>
+        </div>
+
+        <h2>Confirm Permanent Deletion</h2>
+
+        <p>
+            Are you completely sure you want to permanently delete
+            <strong id="deleteTargetTitle">"this poem"</strong>?
+        </p>
+
+        <div class="crimson-alert-actions">
+            <button type="button" class="alert-btn-cancel" onclick="dismissDeleteAlert()">
+                Cancel
+            </button>
+
+            <button type="button" class="alert-btn-confirm" onclick="executePermanentDestruction()">
+                Delete Permanently
+            </button>
         </div>
     </div>
+</div>
 
-    <script>
-        window.targetedPoemId = null;
 
-        function triggerUserDeletion(buttonElement) {
-            // Read data safely directly from HTML elements attributes map
-            const poemId = buttonElement.getAttribute('data-id');
-            const poemTitle = buttonElement.getAttribute('data-title');
-            
-            console.log("Safely fetched data parameters:", poemId, poemTitle);
-            window.targetedPoemId = poemId;
-            
-            const modalElement = document.getElementById('crimsonDeleteAlert');
-            const titleField = document.getElementById('deleteTargetTitle');
-            
-            if (modalElement && titleField) {
-                titleField.textContent = `"${poemTitle}"`;
-                modalElement.style.display = 'flex';
-            } else {
-                if (confirm(`Are you sure you want to permanently delete "${poemTitle}"?`)) {
-                    executePermanentDestruction();
-                }
-            }
-        }
-
-        function dismissDeleteAlert() {
-            const modalElement = document.getElementById('crimsonDeleteAlert');
-            if (modalElement) {
-                modalElement.style.display = 'none';
-            }
-            window.targetedPoemId = null;
-        }
-
-        function executePermanentDestruction() {
-            if (!window.targetedPoemId) {
-                alert("Error: No active poem target selected for deletion.");
-                return;
-            }
-            
-            const formElement = document.getElementById('directUserDestructionForm');
-            const idInput = document.getElementById('destructionFormId');
-            
-            if (formElement && idInput) {
-                idInput.value = window.targetedPoemId;
-                formElement.submit();
-            } else {
-                alert("Critical Integration Error: Form target structural IDs are missing from layout DOM.");
-            }
-        }
-
-        function filterLibraryGrid() {
-            const lookFor = document.getElementById('librarySearchInput').value.toLowerCase();
-            const rows = document.querySelectorAll('#libraryTableBody tr');
-            rows.forEach(row => {
-                if (row.querySelector('.empty-state-card')) return;
-                const textContent = row.innerText.toLowerCase();
-                row.style.display = textContent.includes(lookFor) ? '' : 'none';
-            });
-        }
-    </script>
 </body>
 </html>
 <?php mysqli_free_result($user_poems_result); ?>

@@ -1,14 +1,6 @@
 <?php 
 require_once __DIR__ . '/../../core_files/init_core_files.php';
 require_once __DIR__ . '/../components/defined_code_admin.php';
-
-
-
-if(!check_logged_in()) {
-    header("Location: " . BASE_URL . "/API/OAUTH/google_oauth/index.php");
-    exit();
-}
-
 require_once __DIR__ . '/../components/universal_components/nav_admin.inc.php'; 
 
 global $dbconn;
@@ -26,6 +18,7 @@ $first_letter = !empty($_SESSION['full_name']) ? mb_substr($_SESSION['full_name'
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poem Moderation Queue | Sonrise Admin</title>
+    <link rel="shortcut icon" href="<?= xss_protect(BASE_URL_ADMIN); ?>/assets/Logos/sonrise.png" type="image/x-icon">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL_ADMIN); ?>/assets/css/review_poem.css">
     <link rel="stylesheet" href="<?= xss_protect(BASE_URL_ADMIN); ?>/assets/css/search_bar_admin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -73,6 +66,7 @@ $first_letter = !empty($_SESSION['full_name']) ? mb_substr($_SESSION['full_name'
     cursor: pointer;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none; /* Safeguard styling fallback for anchor elements */
 }
 
 /* Icon Layout Settings */
@@ -92,6 +86,20 @@ $first_letter = !empty($_SESSION['full_name']) ? mb_substr($_SESSION['full_name'
     border-color: #10b981;
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    transform: translateY(-1px);
+}
+
+.btn-mod-edit {
+    background-color: #eff6ff; 
+    border-color: #bfdbfe;
+    color: #2563eb;
+}
+
+.btn-mod-edit:hover {
+    background-color: #2563eb; 
+    border-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
     transform: translateY(-1px);
 }
 
@@ -127,9 +135,15 @@ $first_letter = !empty($_SESSION['full_name']) ? mb_substr($_SESSION['full_name'
             <i class='bx bxs-trash' style="color: #dc3545; font-size: 1.25rem;"></i>
             <span>Submission removed cleanly from storage records.</span>
         </div>
+    <?php elseif ($toast_status === 'edit_success'): ?>
+        <div id="toastNotification" class="toast-notification">
+            <i class='bx bxs-edit-alt' style="color: #2563eb; font-size: 1.25rem;"></i>
+            <span>Poem records successfully modified and updated.</span>
+        </div>
     <?php endif; ?>
 
     <main class="main-content">
+
         <header>
             <h1>Poem Moderation</h1>
             <div class="user-info">
@@ -145,14 +159,14 @@ $first_letter = !empty($_SESSION['full_name']) ? mb_substr($_SESSION['full_name'
             </div>
 
             <div class="table-container">
-                <table>
+                <table class="responsive-moderation-table">
                     <thead>
                         <tr>
                             <th>Poem Details</th>
                             <th>Author</th>
-                            <th>Author Email</th>
+                            <th class="hide-column-mobile">Author Email</th>
                             <th>Genre</th>
-                            <th>Submission Date</th>
+                            <th class="hide-column-tablet">Submission Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -167,11 +181,17 @@ $first_letter = !empty($_SESSION['full_name']) ? mb_substr($_SESSION['full_name'
                                         </div>
                                     </td>
                                     <td><?= xss_protect($row['poem_author']); ?></td>
-                                    <td><?= xss_protect($row['author_email'] ?? 'Anonymous') ?></td>
+                                    <td class="hide-column-mobile"><?= xss_protect($row['author_email'] ?? 'Anonymous') ?></td>
                                     <td><span class="badge active"><?= xss_protect($row['poem_genre']); ?></span></td>
-                                    <td><?= date("M d, Y", strtotime($row['created_at'])); ?></td>
+                                    <td class="hide-column-tablet"><?= date("M d, Y", strtotime($row['created_at'])); ?></td>
                                     <td>
                                     <div class="action-cell-buttons">
+                                        <a href="edit_poem.php?id=<?= intval($row['id']); ?>" 
+                                           class="btn-action-moderation btn-mod-edit" 
+                                           title="Edit Poem Records">
+                                            <i class='bx bx-edit-alt'></i>
+                                        </a>
+
                                         <button class="btn-action-moderation btn-mod-approve" 
                                                 onclick="triggerModerationAlert(<?= $row['id']; ?>, '<?= addslashes(xss_protect($row['poem_title'])); ?>', 'approve')" 
                                                 title="Approve & Publish Live">
@@ -189,7 +209,7 @@ $first_letter = !empty($_SESSION['full_name']) ? mb_substr($_SESSION['full_name'
                             <?php endwhile; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="5" style="text-align: center; padding: 40px; color: #64748b;">
+                                <td colspan="6" class="empty-state-cell" style="text-align: center; padding: 40px; color: #64748b;">
                                     <i class='bx bx-file-blank' style="font-size: 2.5rem; display:block; margin-bottom:10px;"></i>
                                     No pending items inside your moderation queues.
                                 </td>

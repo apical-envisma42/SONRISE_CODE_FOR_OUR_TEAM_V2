@@ -363,7 +363,7 @@ while ($row = mysqli_fetch_assoc($result)):
         <div class="full-poem-hidden" style="display:none;"><?= xss_protect($full_poem_content); ?></div>
 
         <div class="blog-img">
-            <img src="../../assets/poem_uploaded_images/<?= xss_protect($row['poem_image']); ?>" alt="<?= xss_protect($row['poem_title']); ?>">
+            <img src="<?= xss_protect(BASE_URL); ?>/uploads/poem_uploaded_images/<?= xss_protect($row['poem_image']); ?>" alt="<?= xss_protect($row['poem_title']); ?>">
         </div>
 
         

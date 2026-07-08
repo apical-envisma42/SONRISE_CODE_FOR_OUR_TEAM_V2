@@ -61,12 +61,14 @@
                 <img src="./assets/Images/student_doing_assignment.jpg" alt="Stories">
             </div>
             </a>
-
+            <a href="/pages/user_pages/add_poem.php">
             <div class="card">
-                <h2>Community</h2>
-                <p>Join our community to start publishing your own Writings!</p>
+                <h2 style="color: black;">Community</h2>
+                <p style="color: black;">Join our community to start publishing your own Writings!</p>
+                <span style="color: #dc3545;"><strong>Click to explore!</strong></span></p>
                 <img src="./assets/Images/share_your_voice.jpg" alt="Community">
             </div>
+            </a>
         </aside>
     </section>
 </main>

@@ -396,3 +396,110 @@ tr:last-child td {
     box-shadow: 0 6px 16px rgba(185, 28, 28, 0.35);
 }
 
+/* ==========================================================================
+   MOBILE CARD-BASED RESPONSIVE OVERRIDES (NO HORIZONTAL SCROLL)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* 1. Clear the massive vertical top gap */
+    .main-content {
+        margin-left: 0 !important;
+        padding: 15px 16px 24px 16px !important;
+        width: 100%;
+    }
+
+    /* 2. Tighten up the page header element spacing */
+    header {
+        margin-bottom: 16px !important;
+        padding-bottom: 12px !important;
+        gap: 8px !important;
+    }
+
+    header h1 {
+        font-size: 1.4rem !important;
+    }
+
+    .search-bar {
+        margin-bottom: 20px !important;
+    }
+
+    /* 3. Transform the Table Layout into clean Mobile Content Blocks */
+    .table-container {
+        background: transparent !important; /* Removes block container background */
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Hide the traditional table header entirely on phones */
+    .responsive-moderation-table thead {
+        display: none !important;
+    }
+
+    .responsive-moderation-table, 
+    .responsive-moderation-table tbody, 
+    .responsive-moderation-table tr, 
+    .responsive-moderation-table td {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    /* Shape each row into an independent UI Card */
+    .responsive-moderation-table tr {
+        background: var(--white);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    /* Style the individual table cells to act as row fields inside the card */
+    .responsive-moderation-table td {
+        padding: 8px 0 !important;
+        border-bottom: 1px dashed #f1f5f9 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: right !important;
+    }
+
+    /* Force the first cell (Poem Title/Preview) to drop left-aligned and span full width */
+    .responsive-moderation-table td:first-child {
+        display: block !important;
+        text-align: left !important;
+        padding-top: 0 !important;
+        padding-bottom: 12px !important;
+        border-bottom: 2px solid #f1f5f9 !important;
+    }
+
+    .poem-body-preview {
+        max-width: 100% !important; /* Lets text breathe safely across width specs */
+        margin-top: 4px;
+    }
+
+    /* Inject CSS 'Data Labels' on the left side to define what the right column data means */
+    .responsive-moderation-table td:nth-child(2)::before { content: "Author:"; font-weight: 600; color: var(--text-light); text-transform: uppercase; font-size: 0.75rem; }
+    .responsive-moderation-table td:nth-child(3)::before { content: "Email:"; font-weight: 600; color: var(--text-light); text-transform: uppercase; font-size: 0.75rem; }
+    .responsive-moderation-table td:nth-child(4)::before { content: "Genre:"; font-weight: 600; color: var(--text-light); text-transform: uppercase; font-size: 0.75rem; }
+    .responsive-moderation-table td:nth-child(5)::before { content: "Submitted:"; font-weight: 600; color: var(--text-light); text-transform: uppercase; font-size: 0.75rem; }
+    .responsive-moderation-table td:last-child::before { content: "Actions:"; font-weight: 600; color: var(--text-light); text-transform: uppercase; font-size: 0.75rem; }
+
+    /* Clean up the final row column containing your mod buttons */
+    .responsive-moderation-table td:last-child {
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+        margin-top: 4px;
+    }
+
+    .action-cell-buttons {
+        justify-content: flex-end;
+        width: auto;
+    }
+}
+
+/* Structural clean up toggles if elements are hidden in markup */
+@media (max-width: 480px) {
+    .hide-column-mobile {
+        display: none !important; /* Explicitly prevents code conflict markers */
+    }
+}

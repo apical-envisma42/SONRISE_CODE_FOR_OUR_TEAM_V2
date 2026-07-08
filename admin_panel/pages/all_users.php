@@ -4,15 +4,7 @@ require_once __DIR__ . '/../../core_files/session_init.php';
 require_once __DIR__ . '/../../core_files/functions.php'; 
 require_once __DIR__ . '/../components/defined_code_admin.php';
 
-// if(!is_admin()) {
-//     header("Location: ../pages/user_pages/profile.php");
-//     exit();
-// }
 
-if(!check_logged_in()) {
-    header("Location: ../pages/user_pages/profile.php");
-    exit();
-}
 
 global $dbconn;
 
@@ -27,6 +19,7 @@ $total_users = mysqli_fetch_assoc($total_users_query)['total'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | User Management</title>
+    <link rel="shortcut icon" href="<?= xss_protect(BASE_URL_ADMIN); ?>/assets/Logos/sonrise.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/all_users.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>

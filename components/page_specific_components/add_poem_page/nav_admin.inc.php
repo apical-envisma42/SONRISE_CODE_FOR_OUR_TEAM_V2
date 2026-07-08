@@ -17,8 +17,11 @@
             <a href="<?= xss_protect(BASE_URL_ADMIN); ?>/pages/add_poem_admin.php"><i class='bx bxs-edit-alt'></i> Add New Poem</a>
         </li>
 
-        <li class="<?= ($current_page == 'review_poem.php.php') ? 'active' : '' ?>">
+        <li class="<?= ($current_page == 'review_poem.php') ? 'active' : '' ?>">
             <a href="<?= xss_protect(BASE_URL_ADMIN); ?>/pages/review_poem.php"><i class='bx bxs-edit-alt'></i> Review Poem</a>
+        </li>
+        <li class="<?= ($current_page == 'edit_poem.php') ? 'active' : '' ?>">
+            <a href="<?= xss_protect(BASE_URL_ADMIN); ?>/pages/review_poem.php"><i class='bx bxs-edit-alt'></i> Edit Poem</a>
         </li>
         <li><a href="#"><i class='bx bxs-cog'></i> Settings</a></li>
     </ul>

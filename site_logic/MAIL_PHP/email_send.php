@@ -62,7 +62,7 @@ function sendPoemApprovedEmail($to_email, $author_name, $poem_title, $poem_slug)
         $email_body = ob_get_clean();
 
         $mail->isHTML(true);
-        $mail->Subject = "Your Poem has been Approved & Published Live! 🎉";
+        $mail->Subject = "Your Poem has been Approved & Published Live!";
         $mail->Body    = $email_body;
         $mail->AltBody = "Greetings {$author_name}, your poem '{$poem_title}' has passed moderation and is live on SonRise! View it here: " . BASE_URL . "/poems/" . $poem_slug;
 
