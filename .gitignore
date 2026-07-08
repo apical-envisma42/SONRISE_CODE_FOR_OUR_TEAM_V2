@@ -3,9 +3,6 @@
 
 # Ignore the Composer dependencies directory
 /vendor/
-# Ignore Google OAuth credentials
-API/OAUTH/google_oauth/JSON_FILES/oauth_cred_sonrise.json 
-API/OAUTH/google_oauth/JSON_FILES/new cred-for_sonrise.json
 
 # Ignore all log files and log directories
 index_logs/
