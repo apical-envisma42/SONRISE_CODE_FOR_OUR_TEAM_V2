@@ -1,14 +1,13 @@
-# Ignore the Composer dependencies directory
 /vendor/
 
-# Ignore all log files and log directories
 index_logs/
 API/OAUTH/google_oauth/LOGS/
 *.log
 
-# Traditional PHP/Composer ignores
 /vendor/
 .env
 
-# Ignore the entire config components directory
 core_files/config_components/API_CONFIG_COMPONENTS
+
+API/OAUTH/google_oauth/JSON_FILES/
+*.json
