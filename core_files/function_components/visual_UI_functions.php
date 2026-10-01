@@ -2,25 +2,25 @@
 
 // THIS IS FOR DYNAMIC UI CHANGES 
 
-function get_dynamic_title() {
-    $current_file = basename($_SERVER['SCRIPT_NAME']); 
+    function get_dynamic_title() {
+        $current_file = basename($_SERVER['SCRIPT_NAME']); 
 
-    $titles = [
-        'index.php'            => 'A Sanctuary for Poetry, Stories and Literature.',
-        'poems.php'            => 'Our Literature',
-        'about.php'            => 'About Us',
-        'login.html'           => 'Login',
-        'credits.php'          => 'Credits',
-        'podcasts.php'         => 'Podcasts',
-        'profile.php'          => 'Profile',
-        'maintenance_page.php' => 'Maintenance',
-        'add_poem.php'         => 'Add Poem',
-    ];
+        $titles = [
+            'index.php'            => 'A Sanctuary for Poetry, Stories and Literature.',
+            'poems.php'            => 'Our Literature',
+            'about.php'            => 'About Us',
+            'login.html'           => 'Login',
+            'credits.php'          => 'Credits',
+            'podcasts.php'         => 'Podcasts',
+            'profile.php'          => 'Profile',
+            'maintenance_page.php' => 'Maintenance',
+            'add_poem.php'         => 'Add Poem',
+        ];
 
-    $page_name = isset($titles[$current_file]) ? $titles[$current_file] : 'Welcome';
+        $page_name = isset($titles[$current_file]) ? $titles[$current_file] : 'Welcome';
 
-    return "Sonrise | " . xss_protect($page_name);
-}
+        return "Sonrise | " . xss_protect($page_name);
+    }
 
 function get_account_colour($acc_Status) {
     $status = strtolower($acc_Status);

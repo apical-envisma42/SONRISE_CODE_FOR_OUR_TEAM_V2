@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../core_files/init_core_files.php';
 require_once __DIR__ . '/../components/defined_code_admin.php';
 require_once __DIR__ . '/../components/universal_components/nav_admin.inc.php'; 
+require_once __DIR__ . '/../admin_logic/check_user_admin.php';
 
 global $dbconn;
 

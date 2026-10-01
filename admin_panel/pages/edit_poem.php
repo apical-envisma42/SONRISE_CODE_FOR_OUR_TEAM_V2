@@ -1,12 +1,7 @@
 <?php 
 require_once __DIR__ . '/../../core_files/init_core_files.php';
 require_once __DIR__ . '/../components/defined_code_admin.php';
-
-// 1. Authentication and Administrative Role Validation Guard
-if (!check_logged_in() || !isset($_SESSION['account_level']) || $_SESSION['account_level'] !== 'admin') {
-    header("Location: " . BASE_URL . "/pages/error_pages/display_error.php?msg=unauthorized_access");
-    exit();
-}
+require_once __DIR__ . '/../admin_logic/check_user_admin.php';
 
 require_once __DIR__ . '/../components/universal_components/nav_admin.inc.php'; 
 

@@ -1,13 +1,10 @@
 <?php 
 require_once __DIR__ . '/../../core_files/init_core_files.php';
 require_once __DIR__ . '/../components/defined_code_admin.php';
+require_once __DIR__ . '/../admin_logic/check_user_admin.php';
 
 
-// Ensure user is authenticated before pulling data records
-if(!check_logged_in()) {
-    header("Location: " . BASE_URL . "/API/OAUTH/google_oauth/index.php");
-    exit();
-}
+
 
 global $dbconn;
 

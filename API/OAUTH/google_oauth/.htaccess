@@ -8,7 +8,6 @@ Options -Indexes
 
 # 2. Block direct web snoopers from sensitive subdirectories
 # Redirects or drops requests trying to look into storage or logic folders.
-RedirectMatch 403 ^/sonrise/API/OAUTH/google_oauth/(JSON_FILES|LOGS|oauth_logic)(/|$)
 
 # 3. Explicitly allow public access to the main authentication endpoints
 <FilesMatch "^(index\.php|oauth_logic/google_redirect\.php)$">

@@ -3,6 +3,7 @@ require_once __DIR__ . '/../core_files/config.php';
 require_once __DIR__ . '/../core_files/session_init.php';
 require_once __DIR__ . '/../core_files/functions.php'; 
 require_once __DIR__ . '/components/defined_code_admin.php';
+require_once __DIR__ . '/admin_logic/check_user_admin.php';
 
 global $dbconn;
 
@@ -12,6 +13,8 @@ $total_users = mysqli_fetch_assoc($total_users_query)['total'];
 $total_poems_query = mysqli_query($dbconn, "SELECT COUNT(id) as total FROM poems");
 $total_poems = mysqli_fetch_assoc($total_poems_query)['total'];
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +47,8 @@ $total_poems = mysqli_fetch_assoc($total_poems_query)['total'];
             </div>
             <i class='bx bxs-bolt' style="font-size: 3rem; color: var(--accent-gold);"></i>
         </div>
+
+        
 
         <div class="stats-grid">
             <div class="stat-card">

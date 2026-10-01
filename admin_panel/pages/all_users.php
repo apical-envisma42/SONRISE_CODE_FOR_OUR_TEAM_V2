@@ -3,6 +3,7 @@ require_once __DIR__ . '/../../core_files/config.php';
 require_once __DIR__ . '/../../core_files/session_init.php';
 require_once __DIR__ . '/../../core_files/functions.php'; 
 require_once __DIR__ . '/../components/defined_code_admin.php';
+require_once __DIR__ . '/../admin_logic/check_user_admin.php';
 
 
 

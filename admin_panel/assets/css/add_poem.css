@@ -50,7 +50,6 @@
     transition: all 0.3s ease;
 }
 
-/* Themed Focus State */
 .form-group input:focus, 
 .form-group textarea:focus {
     border-color: var(--crimson-red);
@@ -81,7 +80,6 @@
     color: var(--text-dark);
 }
 
-/* Styled File Input */
 input[type="file"] {
     background: #f8fafc;
     padding: 10px;
@@ -154,7 +152,6 @@ select:focus {
     box-shadow: 0 10px 20px rgba(220, 53, 69, 0.2);
 }
 
-/* Sidebar override for this page */
 .nav-links li.active a {
     background: var(--crimson-red) !important;
 }

@@ -43,7 +43,6 @@ try {
     $_SESSION['error_title'] = $error_title;
     $_SESSION['error_msg']   = $error_msg;
 
-    header("Location: ../../pages/error_pages/display_error.php");
     exit();
 }
 

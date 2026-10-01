@@ -1,6 +1,3 @@
-# Ignore the environment configuration file
-.env
-
 # Ignore the Composer dependencies directory
 /vendor/
 
